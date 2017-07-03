@@ -1,5 +1,5 @@
 var browserify = require('browserify');
-var tsify = require('tsify');
+var tscript = require('gulp-typescript');
 var uglify = require('gulp-uglify');
 var when = require('gulp-if');
 var sourcemaps = require('gulp-sourcemaps');
@@ -7,6 +7,7 @@ var buffer = require('vinyl-buffer');
 var source = require('vinyl-source-stream');
 var del = require('del');
 var error = require('./error');
+var tsproject = tscript.createProject('./tsconfig.json');
 
 
 /* -----------------------------------
@@ -32,26 +33,16 @@ module.exports = function (config, gulp) {
          config.path.dist + '*.js*',
       ]).then(function() {
          
-         return browserify({
-            basedir: '.',
-            debug: true,
-            entries: [
-               'src/tsdom.ts'
-            ],
-            cache: {},
-            packageCache: {}
-         })
-         .plugin(tsify)
-         .bundle()
-         .on('error', error)
-         .pipe(
-            source('tsdom.js')
-         )
-         .pipe(
-            buffer()
+         return gulp.src(
+            config.path.src + 'tsdom.ts'
          )
          .pipe(
             when(!release, sourcemaps.init())
+         )
+         .pipe(tsproject())
+         .on('error', error)
+         .pipe(
+            buffer()
          )
          .pipe(
             uglify(config.uglify)
