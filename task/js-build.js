@@ -2,6 +2,7 @@ var browserify = require('browserify');
 var tscript = require('gulp-typescript');
 var uglify = require('gulp-uglify');
 var when = require('gulp-if');
+var rename = require('gulp-rename');
 var sourcemaps = require('gulp-sourcemaps');
 var buffer = require('vinyl-buffer');
 var source = require('vinyl-source-stream');
@@ -21,7 +22,7 @@ var release = process.argv.includes('--release');
 
 /* -----------------------------------
  *
- * Client
+ * Build
  *
  * -------------------------------- */
 
@@ -34,12 +35,14 @@ module.exports = function (config, gulp) {
       ]).then(function() {
          
          return gulp.src(
-            config.path.src + 'tsdom.ts'
+            config.path.src + 'index.ts'
          )
          .pipe(
             when(!release, sourcemaps.init())
          )
-         .pipe(tsproject())
+         .pipe(
+            tsproject()
+         )
          .on('error', error)
          .pipe(
             buffer()
@@ -51,7 +54,12 @@ module.exports = function (config, gulp) {
             when(!release, sourcemaps.write('./'))
          )
          .pipe(
-            gulp.dest(config.path.dist)
+            rename('tsdom.js')
+         )
+         .pipe(
+            gulp.dest(
+               config.path.dist
+            )
          );
          
       });
