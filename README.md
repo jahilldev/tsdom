@@ -1,2 +1,2 @@
-# jdom
+# tsdom
 Simple TypeScript DOM manipulation utility
