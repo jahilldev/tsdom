@@ -7,17 +7,30 @@
  * -------------------------------- */
 
 export interface IMeta {
-   owner?: DOM;
+   owner?: TSDom;
 }
 
 
 /* -----------------------------------
  *
- * DOM
+ * Events
  *
  * -------------------------------- */
 
-export class DOM {
+export interface IEvents {
+   type: string;
+   handler: EventListener;
+   target: HTMLElement;
+}
+
+
+/* -----------------------------------
+ *
+ * TSDom
+ *
+ * -------------------------------- */
+
+export class TSDom {
 
 
    [index: number]: HTMLElement;
@@ -27,6 +40,7 @@ export class DOM {
    meta: IMeta;
    regex: RegExp;
    length: number;
+   events: IEvents[];
 
 
    public constructor(qry: string | HTMLElement, ctx?: Element, meta?: IMeta) {
@@ -36,6 +50,7 @@ export class DOM {
       this.document = document;
       this.meta = meta || {};
       this.regex = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/;
+      this.events = [];
 
       if(typeof qry === 'string') {
 
@@ -69,7 +84,7 @@ export class DOM {
 
    public find (qry: string) {
 
-      return new DOM(qry, this[0], { owner: this });
+      return new TSDom(qry, this[0], { owner: this });
 
    }
 
@@ -172,9 +187,19 @@ export class DOM {
 
    public on (ev: string, cb: EventListener) {
 
+      const self = this;
+
       this.each(el => {
 
-         el.addEventListener(ev, cb);
+         self.off(ev);
+
+         el.addEventListener(ev, cb, false);
+
+         self.events.push({
+            type: ev,
+            handler: cb,
+            target: el
+         });
 
       });
 
@@ -183,13 +208,28 @@ export class DOM {
    }
 
    
-   public off (ev: string, cb: EventListener) {
+   public off (ev: string) {
+
+      const self = this;
+      const { events } = this; 
 
       this.each(el => {
 
-         el.removeEventListener(ev, cb);
+         const active = this.findEvent(ev);
+
+         if(active !== undefined) {
+
+            el.removeEventListener(ev, active.handler, false);
+            
+         }
 
       });
+
+      this.events = events.filter(function(evt) {
+      
+         return (evt.type !== ev);
+      
+      }, event);
 
       return this;
 
@@ -230,6 +270,19 @@ export class DOM {
    }
 
 
+   private findEvent(ev: string) {
+
+      const { events } = this;
+
+      return events.filter(function(_ev) {
+
+         return (_ev.type === ev);
+
+      }, ev)[0];
+
+   }
+
+
 }
 
 
@@ -260,6 +313,6 @@ export function preventDefault(ev: Event) {
 
 export default (qry: string | HTMLElement, ctx?: HTMLElement) => {
 
-   return new DOM(qry, ctx);
+   return new TSDom(qry, ctx);
    
 };

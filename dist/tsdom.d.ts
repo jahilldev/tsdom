@@ -1,14 +1,20 @@
 export interface IMeta {
-    owner?: DOM;
+    owner?: TSDom;
 }
-export declare class DOM {
+export interface IEvents {
+    type: string;
+    handler: EventListener;
+    target: HTMLElement;
+}
+export declare class TSDom {
     [index: number]: HTMLElement;
     document: Document;
     meta: IMeta;
     regex: RegExp;
     length: number;
+    events: IEvents[];
     constructor(qry: string | HTMLElement, ctx?: Element, meta?: IMeta);
-    find(qry: string): DOM;
+    find(qry: string): TSDom;
     css(obj: {
         [key: string]: string;
     }): this;
@@ -17,9 +23,10 @@ export declare class DOM {
     addClass(str: string): this;
     removeClass(str: string): this;
     on(ev: string, cb: EventListener): this;
-    off(ev: string, cb: EventListener): this;
+    off(ev: string): this;
     private query(qry, ctx);
+    private findEvent(ev);
 }
 export declare function preventDefault(ev: Event): false | void;
-declare const _default: (qry: string | HTMLElement, ctx?: HTMLElement) => DOM;
+declare const _default: (qry: string | HTMLElement, ctx?: HTMLElement) => TSDom;
 export default _default;
