@@ -1,0 +1,15 @@
+{
+   "compilerOptions": {
+      "outDir": "dist",
+      "noImplicitAny": true,
+      "target": "es5",
+      "sourceMap": true,
+      "inlineSourceMap": false,
+      "inlineSources": false,
+      "lib": [
+         "dom",
+         "es5",
+         "es6"
+      ]
+   }
+}
