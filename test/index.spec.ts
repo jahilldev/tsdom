@@ -9,7 +9,7 @@ import { expect } from 'chai';
  *
  * -------------------------------- */
 
-import dom, { IDom } from '../src/index';
+import tsdom from '../src/index';
 
 
 /* -----------------------------------
@@ -29,7 +29,7 @@ describe('tsdom:selector', () => {
     */
    describe('(qry = #id, !ctx)', () => {
 
-      let dom: IDom;
+      let tsdom: any;
 
       beforeEach(() => {
 
