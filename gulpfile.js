@@ -20,7 +20,7 @@ function task(task) {
  *
  * -------------------------------- */
 
-gulp.task('js:client', task('js-client'));
+gulp.task('js:build', task('js-build'));
 
 
 /* -----------------------------------
@@ -30,6 +30,6 @@ gulp.task('js:client', task('js-client'));
  * -------------------------------- */
 
 gulp.task('default', sequence(
-   ['js:client'],
-   'watch'
+   ['js:build']
+   // 'watch'
 ));

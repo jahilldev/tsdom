@@ -21,16 +21,22 @@
     "@types/mocha": "^2.2.41",
     "@types/node": "^8.0.6",
     "@types/sinon": "^2.3.2",
+    "browserify": "^14.4.0",
     "chai": "^4.0.2",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
+    "gulp-if": "^2.0.2",
+    "gulp-sequence": "^0.4.6",
+    "gulp-sourcemaps": "^2.6.0",
     "gulp-typescript": "^3.1.7",
     "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
     "mocha": "^3.4.2",
-    "sequence": "^3.0.0",
     "sinon": "^2.3.6",
     "ts-node": "^3.1.0",
     "tsify": "^3.0.1",
-    "typescript": "^2.4.1"
+    "typescript": "^2.4.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
   }
 }
