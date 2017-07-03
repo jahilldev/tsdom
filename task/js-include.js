@@ -38,7 +38,7 @@ module.exports = function (config, gulp) {
             debug: true,
             standalone: 'tsdom',
             entries: [
-               'src/index.ts'
+               'src/include.js'
             ],
             cache: {},
             packageCache: {}
@@ -56,7 +56,7 @@ module.exports = function (config, gulp) {
             when(!release, sourcemaps.init())
          )
          .pipe(
-            uglify(config.uglify)
+            uglify()
          )
          .pipe(
             when(!release, sourcemaps.write('./'))

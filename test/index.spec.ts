@@ -27,7 +27,7 @@ describe('tsdom:selector', () => {
    /*
     * ID
     */
-   describe('(qry = #id, !ctx)', () => {
+   describe('(qry = #id)', () => {
 
       let tsdom: any;
 
@@ -45,7 +45,7 @@ describe('tsdom:selector', () => {
 
       });
 
-      it('calls getElementById() with #id', () => {
+      it('calls getElementById() with qry value', () => {
 
          expect(true).to.equal(true);
 
