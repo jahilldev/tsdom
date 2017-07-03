@@ -6,7 +6,7 @@
  *
  * -------------------------------- */
 
-interface IMeta {
+export interface IMeta {
    owner?: DOM;
 }
 

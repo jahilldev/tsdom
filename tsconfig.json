@@ -3,6 +3,7 @@
       "outDir": "dist",
       "noImplicitAny": true,
       "target": "es5",
+      "declaration": true,
       "sourceMap": true,
       "inlineSourceMap": false,
       "inlineSources": false,

@@ -6,9 +6,10 @@ var rename = require('gulp-rename');
 var sourcemaps = require('gulp-sourcemaps');
 var buffer = require('vinyl-buffer');
 var source = require('vinyl-source-stream');
+var merge = require('merge2');
 var del = require('del');
 var error = require('./error');
-var tsproject = tscript.createProject('./tsconfig.json');
+var project = tscript.createProject('./tsconfig.json');
 
 
 /* -----------------------------------
@@ -34,6 +35,38 @@ module.exports = function (config, gulp) {
          config.path.dist + 'tsdom.js*',
       ]).then(function() {
 
+         var result = gulp.src(
+            config.path.src + 'index.ts'
+         )
+         .pipe(project());
+
+         return merge([
+            result.js
+            .on('error', error)
+            .pipe(
+               buffer()
+            )
+            .pipe(
+               uglify(config.uglify)
+            )
+            .pipe(
+               rename('tsdom.js')
+            )
+            .pipe(
+               gulp.dest(
+                  config.path.dist
+               )
+            ),
+            result.dts
+            .pipe(
+               gulp.dest(
+                  config.path.dist
+               )
+            )
+         ]);
+
+         
+         /*
          return gulp.src(
             config.path.src + 'index.ts'
          )
@@ -41,12 +74,12 @@ module.exports = function (config, gulp) {
             tsproject()
          )
          .on('error', error)
-         .pipe(
-            buffer()
-         )
-         .pipe(
-            uglify(config.uglify)
-         )
+         // .pipe(
+         //    buffer()
+         // )
+         // .pipe(
+         //    uglify(config.uglify)
+         // )
          .pipe(
             rename('tsdom.js')
          )
@@ -55,6 +88,7 @@ module.exports = function (config, gulp) {
                config.path.dist
             )
          );
+         */
          
       });
 
