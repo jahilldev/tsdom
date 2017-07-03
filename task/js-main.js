@@ -22,7 +22,7 @@ var release = process.argv.includes('--release');
 
 /* -----------------------------------
  *
- * Build
+ * Main
  *
  * -------------------------------- */
 
@@ -31,14 +31,11 @@ module.exports = function (config, gulp) {
    return function () {
 
       return del([
-         config.path.dist + '*.js*',
+         config.path.dist + 'tsdom.js*',
       ]).then(function() {
-         
+
          return gulp.src(
             config.path.src + 'index.ts'
-         )
-         .pipe(
-            when(!release, sourcemaps.init())
          )
          .pipe(
             tsproject()
@@ -49,9 +46,6 @@ module.exports = function (config, gulp) {
          )
          .pipe(
             uglify(config.uglify)
-         )
-         .pipe(
-            when(!release, sourcemaps.write('./'))
          )
          .pipe(
             rename('tsdom.js')
