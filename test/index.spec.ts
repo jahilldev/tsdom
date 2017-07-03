@@ -25,9 +25,9 @@ describe('tsdom:selector', () => {
 
 
    /*
-    * default
+    * ID
     */
-   describe('(qry = string, !ctx)', () => {
+   describe('(qry = #id, !ctx)', () => {
 
       let dom: IDom;
 
@@ -45,7 +45,7 @@ describe('tsdom:selector', () => {
 
       });
 
-      it('is a function', () => {
+      it('calls getElementById() with #id', () => {
 
          expect(true).to.equal(true);
 
