@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Simple TypeScript DOM manipulation utility",
   "main": "./dist/tsdom.js",
-  "types": "./src/index",
+  "types": "./dist/tsdom.d.ts",
   "scripts": {
     "test": "mocha -r ts-node/register ./test/**/*.spec.ts"
   },

@@ -59,6 +59,9 @@ module.exports = function (config, gulp) {
             ),
             result.dts
             .pipe(
+               rename('tsdom.d.ts')
+            )
+            .pipe(
                gulp.dest(
                   config.path.dist
                )
