@@ -20,7 +20,6 @@ export interface IMeta {
 export interface IEvents {
    type: string;
    handler: EventListener;
-   target: HTMLElement;
 }
 
 
@@ -197,8 +196,7 @@ export class TSDom {
 
          self.events.push({
             type: ev,
-            handler: cb,
-            target: el
+            handler: cb
          });
 
       });

@@ -4,7 +4,6 @@ export interface IMeta {
 export interface IEvents {
     type: string;
     handler: EventListener;
-    target: HTMLElement;
 }
 export declare class TSDom {
     [index: number]: HTMLElement;
