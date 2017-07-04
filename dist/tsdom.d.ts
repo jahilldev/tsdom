@@ -1,18 +1,18 @@
-export interface IMeta {
+export interface ITSD_Meta {
     owner?: TSDom;
 }
-export interface IEvents {
+export interface ITSD_Events {
     type: string;
     handler: EventListener;
 }
 export declare class TSDom {
     [index: number]: HTMLElement;
     document: Document;
-    meta: IMeta;
+    meta: ITSD_Meta;
     regex: RegExp;
     length: number;
-    events: IEvents[];
-    constructor(qry: string | HTMLElement, ctx?: Element, meta?: IMeta);
+    events: ITSD_Events[];
+    constructor(qry: string | HTMLElement, ctx?: Element, meta?: ITSD_Meta);
     find(qry: string): TSDom;
     each(cb: (el: HTMLElement) => void): this;
     css(obj: {

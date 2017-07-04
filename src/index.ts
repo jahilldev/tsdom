@@ -6,7 +6,7 @@
  *
  * -------------------------------- */
 
-export interface IMeta {
+export interface ITSD_Meta {
    owner?: TSDom;
 }
 
@@ -17,7 +17,7 @@ export interface IMeta {
  *
  * -------------------------------- */
 
-export interface IEvents {
+export interface ITSD_Events {
    type: string;
    handler: EventListener;
 }
@@ -36,13 +36,13 @@ export class TSDom {
 
 
    document: Document;
-   meta: IMeta;
+   meta: ITSD_Meta;
    regex: RegExp;
    length: number;
-   events: IEvents[];
+   events: ITSD_Events[];
 
 
-   public constructor(qry: string | HTMLElement, ctx?: Element, meta?: IMeta) {
+   public constructor(qry: string | HTMLElement, ctx?: Element, meta?: ITSD_Meta) {
 
       let els: any;
 
