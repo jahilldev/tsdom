@@ -234,6 +234,32 @@ export class TSDom {
    }
 
 
+   public append(html: string) {
+
+      this.each(el => {
+
+         el.insertAdjacentHTML('beforeend', html);
+
+      });
+
+      return this;
+
+   }
+
+
+   public prepend(html: string) {
+
+      this.each(el => {
+
+         el.insertAdjacentHTML('afterbegin', html);
+
+      });
+
+      return this;
+
+   }
+
+
    private query(qry: string, ctx: Element | Document) {
 
       const doc = this.document;

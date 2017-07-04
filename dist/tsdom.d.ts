@@ -23,6 +23,8 @@ export declare class TSDom {
     removeClass(str: string): this;
     on(ev: string, cb: EventListener): this;
     off(ev: string): this;
+    append(html: string): this;
+    prepend(html: string): this;
     private query(qry, ctx);
     private findEvent(ev);
 }
