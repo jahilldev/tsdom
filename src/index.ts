@@ -188,9 +188,9 @@ export class TSDom {
 
       const self = this;
 
-      this.each(el => {
+      this.off(ev);
 
-         self.off(ev);
+      this.each(el => {
 
          el.addEventListener(ev, cb, false);
 
