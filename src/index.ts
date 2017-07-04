@@ -189,7 +189,7 @@ export class TSDom {
       const self = this;
 
       const direct = typeof op1 === 'function' && op2 === undefined;
-      const child = typeof op1 === 'string' && typeof op2 === 'function';
+      const delegate = typeof op1 === 'string' && typeof op2 === 'function';
 
       this.off(ev);
 
@@ -198,38 +198,23 @@ export class TSDom {
          let cb = null;
 
          if(direct) {
-
             cb = <EventListener>op1;
-
-            el.addEventListener(ev, cb, false);
-
          }
 
-         if(child) {
-
-            cb = (ev: Event) => {
-
-               let hit = false;
-               let els = new TSDom(<string>op1, el);
-
-               els.each(_el => {
-                  if(ev.target == _el) {
-                     hit = true;
-                  }
-               });
-
-               if(hit) op2(ev);
-               
-            };
-
-            el.addEventListener(ev, cb, false);
-
+         if(delegate) {
+            cb = self.delegateEvent(el, <string>op1, op2);
          }
 
-         if(cb) self.events.push({
-            type: ev,
-            handler: cb
-         });
+         if(cb) {
+            
+            el.addEventListener(ev, cb, false);
+
+            self.events.push({
+               type: ev,
+               handler: cb
+            });
+
+         }
 
       });
 
@@ -335,6 +320,26 @@ export class TSDom {
          return (_ev.type === ev);
 
       }, ev)[0];
+
+   }
+
+
+   private delegateEvent(el: HTMLElement, ev: string, cb: EventListener) {
+
+      return (_ev: Event) => {
+
+         let hit = false;
+         let els = new TSDom(ev, el);
+
+         els.each(_el => {
+            if(_ev.target == _el) {
+               hit = true;
+            }
+         });
+
+         if(hit) cb(_ev);
+         
+      };
 
    }
 
