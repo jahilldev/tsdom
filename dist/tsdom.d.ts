@@ -21,7 +21,7 @@ export declare class TSDom {
     hasClass(str: string): boolean;
     addClass(str: string): this;
     removeClass(str: string): this;
-    on(ev: string, cb: EventListener): this;
+    on(ev: string, op1: string | EventListener, op2?: EventListener): this;
     off(ev: string): this;
     append(html: string): this;
     prepend(html: string): this;

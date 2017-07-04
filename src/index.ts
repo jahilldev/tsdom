@@ -184,17 +184,49 @@ export class TSDom {
    }
 
 
-   public on (ev: string, cb: EventListener) {
+   public on (ev: string, op1: string | EventListener, op2?: EventListener) {
 
       const self = this;
+
+      const direct = typeof op1 === 'function' && op2 === undefined;
+      const child = typeof op1 === 'string' && typeof op2 === 'function';
 
       this.off(ev);
 
       this.each(el => {
 
-         el.addEventListener(ev, cb, false);
+         let cb = null;
 
-         self.events.push({
+         if(direct) {
+
+            cb = <EventListener>op1;
+
+            el.addEventListener(ev, cb, false);
+
+         }
+
+         if(child) {
+
+            cb = (ev: Event) => {
+
+               let hit = false;
+               let els = new TSDom(<string>op1, el);
+
+               els.each(_el => {
+                  if(ev.target == _el) {
+                     hit = true;
+                  }
+               });
+
+               if(hit) op2(ev);
+               
+            };
+
+            el.addEventListener(ev, cb, false);
+
+         }
+
+         if(cb) self.events.push({
             type: ev,
             handler: cb
          });
