@@ -14,10 +14,10 @@ export declare class TSDom {
     events: IEvents[];
     constructor(qry: string | HTMLElement, ctx?: Element, meta?: IMeta);
     find(qry: string): TSDom;
+    each(cb: (el: HTMLElement) => void): this;
     css(obj: {
         [key: string]: string;
     }): this;
-    each(cb: (el: HTMLElement) => void): this;
     hasClass(str: string): boolean;
     addClass(str: string): this;
     removeClass(str: string): this;

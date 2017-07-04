@@ -88,6 +88,23 @@ export class TSDom {
    }
 
 
+   public each (cb: (el: HTMLElement) => void) {
+
+      for(let i = 0, len = this.length; i < len;) {
+
+         let el: HTMLElement = this[i];
+
+         if(cb.call(this, this[i], i++) == false) {
+            break;
+         }
+
+      }
+
+      return this;
+
+   }
+
+
    public css(obj: { [key: string]: string }) {
 
       const self = this;
@@ -103,23 +120,6 @@ export class TSDom {
          }
 
       });
-
-      return this;
-
-   }
-
-
-   public each (cb: (el: HTMLElement) => void) {
-
-      for(let i = 0, len = this.length; i < len;) {
-
-         let el: HTMLElement = this[i];
-
-         if(cb.call(this, this[i], i++) == false) {
-            break;
-         }
-
-      }
 
       return this;
 
