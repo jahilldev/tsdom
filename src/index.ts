@@ -214,6 +214,8 @@ export class TSDom {
                handler: cb
             });
 
+         } else {
+            throw new Error('TSDom.on');
          }
 
       });
