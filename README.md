@@ -6,4 +6,4 @@ Simple TypeScript DOM manipulation utility
 Add the package to your project using one of the following:
 - RequireJS:  `var tsdom = require('tsdom')`
 - ES6 Import: `import tsdom from 'tsdom'`
-- Or copy standalone file into your web directory (e.g ./node_modules/tsdom/dist): `<script src="./tsdom.inc.js" />`
+- By copying the file (e.g ./node_modules/tsdom/dist/tsdom.inc.js) into your web directory: `<script src="./tsdom.inc.js" />`
