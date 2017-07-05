@@ -67,31 +67,6 @@ module.exports = function (config, gulp) {
                )
             )
          ]);
-
-         
-         /*
-         return gulp.src(
-            config.path.src + 'index.ts'
-         )
-         .pipe(
-            tsproject()
-         )
-         .on('error', error)
-         // .pipe(
-         //    buffer()
-         // )
-         // .pipe(
-         //    uglify(config.uglify)
-         // )
-         .pipe(
-            rename('tsdom.js')
-         )
-         .pipe(
-            gulp.dest(
-               config.path.dist
-            )
-         );
-         */
          
       });
 
