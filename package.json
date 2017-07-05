@@ -1,5 +1,5 @@
 {
-  "name": "tsjdom",
+  "name": "tsdom",
   "version": "0.0.1",
   "description": "Simple TypeScript DOM manipulation utility",
   "main": "./dist/tsdom.js",
