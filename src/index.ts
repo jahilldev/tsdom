@@ -215,7 +215,7 @@ export class TSDom {
             });
 
          } else {
-            throw new Error('TSDom.on');
+            throw new Error('TSDom.on: Invalid Arguments');
          }
 
       });
