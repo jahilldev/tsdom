@@ -27,7 +27,7 @@ export declare class TSDom {
     prepend(html: string): this;
     private query(qry, ctx);
     private findEvent(ev);
-    private delegateEvent(el, ev, cb);
+    private delegateEvent(el, qry, cb);
 }
 export declare function preventDefault(ev: Event): false | void;
 declare const _default: (qry: string | HTMLElement, ctx?: HTMLElement) => TSDom;

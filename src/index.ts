@@ -326,20 +326,20 @@ export class TSDom {
    }
 
 
-   private delegateEvent(el: HTMLElement, ev: string, cb: EventListener) {
+   private delegateEvent(el: HTMLElement, qry: string, cb: EventListener) {
 
-      return (_ev: Event) => {
+      return (ev: Event) => {
 
          let hit = false;
-         let els = new TSDom(ev, el);
+         let els = new TSDom(qry, el);
 
          els.each(_el => {
-            if(_ev.target == _el) {
+            if(ev.target == _el) {
                hit = true;
             }
          });
 
-         if(hit) cb(_ev);
+         if(hit) cb(ev);
          
       };
 
