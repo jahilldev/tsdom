@@ -2,12 +2,23 @@
 
 /* -----------------------------------
  *
+ * Default
+ *
+ * -------------------------------- */
+
+export interface TSDom {
+   (qry: string | HTMLElement, ctx?: Element, meta?: TSDomMeta): TSDomCore
+}
+
+
+/* -----------------------------------
+ *
  * Meta
  *
  * -------------------------------- */
 
-export interface ITSD_Meta {
-   owner?: TSDom;
+export interface TSDomMeta {
+   owner?: TSDomCore;
 }
 
 
@@ -17,7 +28,7 @@ export interface ITSD_Meta {
  *
  * -------------------------------- */
 
-export interface ITSD_Events {
+export interface TSDomEvents {
    type: string;
    handler: EventListener;
 }
@@ -29,20 +40,20 @@ export interface ITSD_Events {
  *
  * -------------------------------- */
 
-export class TSDom {
+export class TSDomCore {
 
 
    [index: number]: HTMLElement;
 
 
    document: Document;
-   meta: ITSD_Meta;
+   meta: TSDomMeta;
    regex: RegExp;
    length: number;
-   events: ITSD_Events[];
+   events: TSDomEvents[];
 
 
-   public constructor(qry: string | HTMLElement, ctx?: Element, meta?: ITSD_Meta) {
+   public constructor(qry: string | HTMLElement, ctx?: Element, meta?: TSDomMeta) {
 
       let els: any;
 
@@ -83,7 +94,7 @@ export class TSDom {
 
    public find (qry: string) {
 
-      return new TSDom(qry, this[0], { owner: this });
+      return new TSDomCore(qry, this[0], { owner: this });
 
    }
 
@@ -331,7 +342,7 @@ export class TSDom {
       return (ev: Event) => {
 
          let hit = false;
-         let els = new TSDom(qry, el);
+         let els = new TSDomCore(qry, el);
 
          els.each(_el => {
             if(ev.target == _el) {
@@ -376,6 +387,6 @@ export function preventDefault(ev: Event) {
 
 export default (qry: string | HTMLElement, ctx?: HTMLElement) => {
 
-   return new TSDom(qry, ctx);
+   return new TSDomCore(qry, ctx);
    
 };

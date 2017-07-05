@@ -1,19 +1,22 @@
-export interface ITSD_Meta {
-    owner?: TSDom;
+export interface TSDom {
+    (qry: string | HTMLElement, ctx?: Element, meta?: TSDomMeta): TSDomCore;
 }
-export interface ITSD_Events {
+export interface TSDomMeta {
+    owner?: TSDomCore;
+}
+export interface TSDomEvents {
     type: string;
     handler: EventListener;
 }
-export declare class TSDom {
+export declare class TSDomCore {
     [index: number]: HTMLElement;
     document: Document;
-    meta: ITSD_Meta;
+    meta: TSDomMeta;
     regex: RegExp;
     length: number;
-    events: ITSD_Events[];
-    constructor(qry: string | HTMLElement, ctx?: Element, meta?: ITSD_Meta);
-    find(qry: string): TSDom;
+    events: TSDomEvents[];
+    constructor(qry: string | HTMLElement, ctx?: Element, meta?: TSDomMeta);
+    find(qry: string): TSDomCore;
     each(cb: (el: HTMLElement) => void): this;
     css(obj: {
         [key: string]: string;
@@ -30,5 +33,5 @@ export declare class TSDom {
     private delegateEvent(el, qry, cb);
 }
 export declare function preventDefault(ev: Event): false | void;
-declare const _default: (qry: string | HTMLElement, ctx?: HTMLElement) => TSDom;
+declare const _default: (qry: string | HTMLElement, ctx?: HTMLElement) => TSDomCore;
 export default _default;
