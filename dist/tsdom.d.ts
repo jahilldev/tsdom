@@ -21,6 +21,9 @@ export declare class TSDomObject {
     css(obj: {
         [key: string]: string;
     }): this;
+    attr(obj: {
+        [key: string]: string;
+    }): this;
     hasClass(str: string): boolean;
     addClass(str: string): this;
     removeClass(str: string): this;

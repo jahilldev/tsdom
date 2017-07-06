@@ -1,6 +1,6 @@
 # tsdom
 Fast, lightweight TypeScript DOM manipulation utility. 
-**2.55kb** minified, **1.03kb** gzipped.
+**2.66kb** minified, **1.05kb** gzipped.
 ### Install
 `npm install --save tsdom`
 ### Setup
@@ -10,15 +10,16 @@ Add the package to your project using one of the following:
 - `<script src="./tsdom.inc.js" />` ("tsdom/dist/tsdom.inc.js")
 ### Usage
 TSDom uses CSS (or jQuery) selector syntax, e,g:
+- `let el = tsdom(document)`
 - `let el = tsdom("#yourId")`
 - `let el = tsdom(".yourClass")`
 - `let el = tsdom("[data-your-attribute]")`
-- `let el = tsdom(document)`
 ### API
 Once you've selected an element or elements, you can chain the following methods:
 - `el.addClass("yourClass")`
 - `el.removeClass("yourClass")`
 - `el.css({ "opacity": "0" })`
+- `el.attr({ "title": "Your new title" })`
 - `el.on("click", (ev) => { // do something })`
 - `el.on("click", ".yourClass", (ev) => { // do something })`
 - `el.off("click")`

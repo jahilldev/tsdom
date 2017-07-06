@@ -137,6 +137,27 @@ export class TSDomObject {
    }
 
 
+   public attr(obj: { [key: string]: string }) {
+
+      const self = this;
+
+      this.each(el => {
+
+         for(let key in obj) {
+
+            const val = obj[key];
+
+            el.setAttribute(key, val);
+
+         }
+
+      });
+
+      return this;
+
+   }
+
+
    public hasClass(str: string) {
 
       let result = false;
