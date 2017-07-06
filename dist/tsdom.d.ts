@@ -1,14 +1,14 @@
 export interface TSDom {
-    (qry: string | HTMLElement, ctx?: Element, meta?: TSDomMeta): TSDomCore;
+    (qry: string | HTMLElement, ctx?: Element, meta?: TSDomMeta): TSDomObject;
 }
 export interface TSDomMeta {
-    owner?: TSDomCore;
+    owner?: TSDomObject;
 }
 export interface TSDomEvents {
     type: string;
     handler: EventListener;
 }
-export declare class TSDomCore {
+export declare class TSDomObject {
     [index: number]: HTMLElement;
     document: Document;
     meta: TSDomMeta;
@@ -16,7 +16,7 @@ export declare class TSDomCore {
     length: number;
     events: TSDomEvents[];
     constructor(qry: string | HTMLElement, ctx?: Element, meta?: TSDomMeta);
-    find(qry: string): TSDomCore;
+    find(qry: string): TSDomObject;
     each(cb: (el: HTMLElement) => void): this;
     css(obj: {
         [key: string]: string;
@@ -33,5 +33,5 @@ export declare class TSDomCore {
     private delegateEvent(el, qry, cb);
 }
 export declare function preventDefault(ev: Event): false | void;
-declare const _default: (qry: string | HTMLElement, ctx?: HTMLElement) => TSDomCore;
+declare const _default: (qry: string | HTMLElement, ctx?: HTMLElement) => TSDomObject;
 export default _default;

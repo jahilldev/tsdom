@@ -7,7 +7,7 @@
  * -------------------------------- */
 
 export interface TSDom {
-   (qry: string | HTMLElement, ctx?: Element, meta?: TSDomMeta): TSDomCore
+   (qry: string | HTMLElement, ctx?: Element, meta?: TSDomMeta): TSDomObject
 }
 
 
@@ -18,7 +18,7 @@ export interface TSDom {
  * -------------------------------- */
 
 export interface TSDomMeta {
-   owner?: TSDomCore;
+   owner?: TSDomObject;
 }
 
 
@@ -40,7 +40,7 @@ export interface TSDomEvents {
  *
  * -------------------------------- */
 
-export class TSDomCore {
+export class TSDomObject {
 
 
    [index: number]: HTMLElement;
@@ -94,7 +94,7 @@ export class TSDomCore {
 
    public find (qry: string) {
 
-      return new TSDomCore(qry, this[0], { owner: this });
+      return new TSDomObject(qry, this[0], { owner: this });
 
    }
 
@@ -342,7 +342,7 @@ export class TSDomCore {
       return (ev: Event) => {
 
          let hit = false;
-         let els = new TSDomCore(qry, el);
+         let els = new TSDomObject(qry, el);
 
          els.each(_el => {
             if(ev.target == _el) {
@@ -387,6 +387,6 @@ export function preventDefault(ev: Event) {
 
 export default (qry: string | HTMLElement, ctx?: HTMLElement) => {
 
-   return new TSDomCore(qry, ctx);
+   return new TSDomObject(qry, ctx);
    
 };

@@ -1,13 +1,15 @@
 {
   "name": "tsdom",
-  "version": "0.1.0",
-  "description": "Simple TypeScript DOM manipulation utility",
+  "version": "0.1.2",
+  "description": "Fast, lightweight TypeScript DOM manipulation utility",
   "main": "./dist/tsdom.js",
   "types": "./dist/tsdom.d.ts",
   "scripts": {
     "test": "mocha -r ts-node/register ./test/**/*.spec.ts"
   },
   "keywords": [
+    "lightweight",
+    "fast",
     "dom",
     "manipulation",
     "utility",
