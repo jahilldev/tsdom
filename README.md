@@ -16,6 +16,7 @@ TSDom uses CSS (or jQuery) selector syntax, e,g:
 - `let el = tsdom("[data-your-attribute]")`
 ### API
 Once you've selected an element or elements, you can chain the following methods:
+- `el.find("#yourSelector")`
 - `el.addClass("yourClass")`
 - `el.removeClass("yourClass")`
 - `el.css({ "opacity": "0" })`
