@@ -13,6 +13,7 @@ TSDom uses CSS (or jQuery) selector syntax, e,g:
 - `let el = tsdom("#yourId")`
 - `let el = tsdom(".yourClass")`
 - `let el = tsdom("[data-your-attribute]")`
+- `let el = tsdom(document)`
 ### API
 Once you've selected an element or elements, you can chain the following methods:
 - `el.addClass("yourClass")`
