@@ -11,6 +11,7 @@ Add the package to your project using one of the following:
 ### Usage
 TSDom uses CSS (or jQuery) selector syntax, e,g:
 - `let el = tsdom(document)`
+- `let el = tsdom("div")`
 - `let el = tsdom("#yourId")`
 - `let el = tsdom(".yourClass")`
 - `let el = tsdom("[data-your-attribute]")`
