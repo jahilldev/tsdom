@@ -17,6 +17,9 @@ TSDom uses CSS (or jQuery) selector syntax, e,g:
 ### API
 Once you've selected an element or elements, you can chain the following methods:
 - `el.find("#yourSelector")`
+- `el.each(e => { // do something })`
+- `el.append("<p>Lorem ipsum</p>")`
+- `el.prepend("<p>Lorem ipsum</p>")`
 - `el.addClass("yourClass")`
 - `el.removeClass("yourClass")`
 - `el.css({ "opacity": "0" })`
