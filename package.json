@@ -1,6 +1,6 @@
 {
   "name": "tsdom",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Fast, lightweight TypeScript DOM manipulation utility",
   "main": "./dist/tsdom.js",
   "types": "./dist/tsdom.d.ts",
@@ -19,6 +19,10 @@
   ],
   "author": "James Hill",
   "license": "MIT",
+  "repository" : { 
+    "type" : "git",
+    "url" : "https://github.com/jhdevuk/tsdom"
+  },
   "devDependencies": {
     "@types/chai": "^4.0.1",
     "@types/mocha": "^2.2.41",
