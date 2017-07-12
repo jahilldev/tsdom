@@ -256,7 +256,7 @@ export class TSDomObject {
 
          if(cb) {
             
-            el.addEventListener(ev, cb, false);
+            el.addEventListener(ev, cb, true);
 
             self.events.push({
                type: ev,
@@ -285,7 +285,7 @@ export class TSDomObject {
 
          if(active !== undefined) {
 
-            el.removeEventListener(ev, active.handler, false);
+            el.removeEventListener(ev, active.handler, true);
             
          }
 
