@@ -216,6 +216,23 @@ export class TSDomObject {
    }
 
 
+   public toggleClass(str: string) {
+
+      if(this.hasClass(str)) {
+
+         this.removeClass(str);
+
+      } else {
+
+         this.addClass(str);
+
+      }
+
+      return this;
+
+   }
+
+
    public on (ev: string, op1: string | EventListener, op2?: EventListener) {
 
       const self = this;

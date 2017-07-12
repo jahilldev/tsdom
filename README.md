@@ -10,7 +10,7 @@ Add the package to your project using one of the following:
 - `<script src="./tsdom.inc.js" />` ("tsdom/dist/tsdom.inc.js")
 ### Usage
 TSDom uses CSS (or jQuery) selector syntax, e,g:
-- `let el = tsdom(document)`
+- `let el = tsdom(element)`
 - `let el = tsdom("div")`
 - `let el = tsdom("#yourId")`
 - `let el = tsdom(".yourClass")`
@@ -23,6 +23,7 @@ Once you've selected an element or elements, you can chain the following methods
 - `el.prepend("<p>Lorem ipsum</p>")`
 - `el.addClass("yourClass")`
 - `el.removeClass("yourClass")`
+- `el.toggleClass("yourClass")`
 - `el.css({ "opacity": "0" })`
 - `el.attr({ "title": "Your new title" })`
 - `el.on("click", (ev) => { // do something })`

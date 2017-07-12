@@ -27,6 +27,7 @@ export declare class TSDomObject {
     hasClass(str: string): boolean;
     addClass(str: string): this;
     removeClass(str: string): this;
+    toggleClass(str: string): this;
     on(ev: string, op1: string | EventListener, op2?: EventListener): this;
     off(ev: string): this;
     append(html: string): this;
