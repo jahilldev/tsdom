@@ -302,6 +302,21 @@ export class TSDomObject {
    }
 
 
+   public html(val?: string) {
+
+      const el = this[0];
+
+      if(!val) {
+
+         return el.innerHTML;
+
+      }
+
+      return this;
+
+   }
+
+
    public append(html: string) {
 
       this.each(el => {
