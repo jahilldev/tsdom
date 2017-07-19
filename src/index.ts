@@ -312,8 +312,6 @@ export class TSDomObject {
 
       }
 
-      return this;
-
    }
 
 

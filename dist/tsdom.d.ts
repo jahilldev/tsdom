@@ -30,7 +30,7 @@ export declare class TSDomObject {
     toggleClass(str: string): this;
     on(ev: string, op1: string | EventListener, op2?: EventListener): this;
     off(ev: string): this;
-    html(val?: string): string | this;
+    html(val?: string): string;
     append(html: string): this;
     prepend(html: string): this;
     private query(qry, ctx);
