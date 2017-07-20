@@ -18,6 +18,7 @@ TSDom uses CSS (or jQuery) selector syntax, e,g:
 ### API
 Once you've selected an element or elements, you can chain the following methods:
 - `el.find("#yourSelector")`
+- `el.closest(".yourSelector")`
 - `el.each(e => { // do something })`
 - `el.append("<p>Lorem ipsum</p>")`
 - `el.prepend("<p>Lorem ipsum</p>")`
@@ -29,6 +30,10 @@ Once you've selected an element or elements, you can chain the following methods
 - `el.on("click", (ev) => { // do something })`
 - `el.on("click", ".yourClass", (ev) => { // do something })`
 - `el.off("click")`
+And the following are return methods
+- `el.hasClass("active")`
+- `el.html()`
+- `el.html("<div>Lorem ipsum</div>")`
 ### Types
 The package exports the following types for use in your app:
 - `import tsdom, { TSDom, TSDomObject } from 'tsdom'`

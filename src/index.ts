@@ -99,6 +99,31 @@ export class TSDomObject {
    }
 
 
+   public closest(qry: string) {
+
+      const doc = this.document;
+      const match = doc.querySelectorAll(qry);
+
+      let el = this[0];
+      let i;
+
+      do {
+
+         i = match.length;
+
+         while (--i >= 0 && match.item(i) !== el) {};
+
+      } while (
+
+         (i < 0) && (el = el.parentElement)
+         
+      );
+      
+      return new TSDomObject(el);
+
+   }
+
+
    public each (cb: (el: HTMLElement) => void) {
 
       for(let i = 0, len = this.length; i < len;) {
@@ -216,23 +241,6 @@ export class TSDomObject {
    }
 
 
-   public toggleClass(str: string) {
-
-      if(this.hasClass(str)) {
-
-         this.removeClass(str);
-
-      } else {
-
-         this.addClass(str);
-
-      }
-
-      return this;
-
-   }
-
-
    public on (ev: string, op1: string | EventListener, op2?: EventListener) {
 
       const self = this;
@@ -256,7 +264,7 @@ export class TSDomObject {
 
          if(cb) {
             
-            el.addEventListener(ev, cb, true);
+            el.addEventListener(ev, cb, false);
 
             self.events.push({
                type: ev,
@@ -285,7 +293,7 @@ export class TSDomObject {
 
          if(active !== undefined) {
 
-            el.removeEventListener(ev, active.handler, true);
+            el.removeEventListener(ev, active.handler, false);
             
          }
 
@@ -311,6 +319,10 @@ export class TSDomObject {
          return el.innerHTML;
 
       }
+
+      el.innerHTML = val;
+
+      return val;
 
    }
 
