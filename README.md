@@ -30,6 +30,7 @@ Once you've selected an element or elements, you can chain the following methods
 - `el.on("click", (ev) => { // do something })`
 - `el.on("click", ".yourClass", (ev) => { // do something })`
 - `el.off("click")`
+
 And the following are return methods
 - `el.hasClass("active")`
 - `el.html()`
