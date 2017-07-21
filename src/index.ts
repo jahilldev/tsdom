@@ -331,7 +331,7 @@ export class TSDomObject {
 
       const el = this[0];
 
-      if(!val) {
+      if(val == undefined) {
 
          return el.innerHTML;
 
