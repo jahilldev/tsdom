@@ -31,6 +31,7 @@ export declare class TSDomObject {
     toggleClass(str: string): this;
     on(ev: string, op1: string | EventListener, op2?: EventListener): this;
     off(ev: string): this;
+    text(val?: string): string;
     html(val?: string): string;
     append(html: string): this;
     prepend(html: string): this;
