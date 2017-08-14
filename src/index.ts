@@ -327,6 +327,23 @@ export class TSDomObject {
    }
 
 
+   public text(val?: string) {
+
+      const el = this[0];
+
+      if(val == undefined) {
+         
+         return el.innerText;
+
+      }
+
+      el.innerText = val;
+
+      return val;
+
+   }
+
+
    public html(val?: string) {
 
       const el = this[0];

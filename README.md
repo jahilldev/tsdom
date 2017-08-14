@@ -33,6 +33,8 @@ Once you've selected an element or elements, you can chain the following methods
 
 And the following are return methods
 - `el.hasClass("active")`
+- `el.text()`
+- `el.text("Lorem ipsum")`
 - `el.html()`
 - `el.html("<div>Lorem ipsum</div>")`
 ### Types
