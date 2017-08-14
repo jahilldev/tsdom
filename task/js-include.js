@@ -56,7 +56,9 @@ module.exports = function (config, gulp) {
             when(!release, sourcemaps.init())
          )
          .pipe(
-            uglify()
+            when(release, 
+               uglify(config.uglify)
+            )
          )
          .pipe(
             when(!release, sourcemaps.write('./'))

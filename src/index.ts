@@ -280,7 +280,7 @@ export class TSDomObject {
          }
 
          if(cb) {
-            
+
             el.addEventListener(ev, cb, false);
 
             self.events.push({
@@ -320,7 +320,7 @@ export class TSDomObject {
       
          return (evt.type !== ev);
       
-      }, event);
+      });
 
       return this;
 

@@ -1,6 +1,6 @@
 # tsdom
-Fast, lightweight TypeScript DOM manipulation utility. 
-**2.66kb** minified, **1.05kb** gzipped.
+Fast, lightweight DOM manipulation utility, written in TypeScript and usable anywhere.
+**1.17kb** gzipped.
 ### Install
 `npm install --save tsdom`
 ### Setup

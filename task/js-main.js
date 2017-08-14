@@ -47,7 +47,9 @@ module.exports = function (config, gulp) {
                buffer()
             )
             .pipe(
-               uglify(config.uglify)
+               when(release, 
+                  uglify(config.uglify)
+               )
             )
             .pipe(
                rename('tsdom.js')
