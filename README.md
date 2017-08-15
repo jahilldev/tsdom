@@ -1,6 +1,6 @@
 # tsdom
-Fast, lightweight DOM manipulation utility, written in TypeScript and usable anywhere.
-**1.17kb** gzipped.
+Fast, lightweight DOM manipulation utility.
+**1.22kb** gzipped.
 ### Install
 `npm install --save tsdom`
 ### Setup
@@ -22,6 +22,7 @@ Once you've selected an element or elements, you can chain the following methods
 - `el.each(e => { // do something })`
 - `el.append("<p>Lorem ipsum</p>")`
 - `el.prepend("<p>Lorem ipsum</p>")`
+- `el.empty()`
 - `el.addClass("yourClass")`
 - `el.removeClass("yourClass")`
 - `el.toggleClass("yourClass")`

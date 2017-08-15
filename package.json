@@ -1,7 +1,7 @@
 {
   "name": "tsdom",
-  "version": "0.2.9",
-  "description": "Fast, lightweight TypeScript DOM manipulation utility",
+  "version": "0.3.0",
+  "description": "Fast, lightweight JavaScript DOM manipulation utility",
   "main": "./dist/tsdom.js",
   "types": "./dist/tsdom.d.ts",
   "scripts": {
@@ -15,6 +15,7 @@
     "utility",
     "library",
     "typescript",
+    "javascript",
     "jhdevuk"
   ],
   "author": "James Hill",

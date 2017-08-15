@@ -329,15 +329,17 @@ export class TSDomObject {
 
    public text(val?: string) {
 
-      const el = this[0];
-
       if(val == undefined) {
          
-         return el.innerText;
+         return this[0].innerText;
 
       }
 
-      el.innerText = val;
+      this.each(el => {
+         
+         el.innerHTML = val;
+
+      });
 
       return val;
 
@@ -346,15 +348,17 @@ export class TSDomObject {
 
    public html(val?: string) {
 
-      const el = this[0];
-
       if(val == undefined) {
 
-         return el.innerHTML;
+         return this[0].innerHTML;
 
       }
 
-      el.innerHTML = val;
+      this.each(el => {
+
+         el.innerHTML = val;
+
+      });
 
       return val;
 
@@ -379,6 +383,23 @@ export class TSDomObject {
       this.each(el => {
 
          el.insertAdjacentHTML('afterbegin', html);
+
+      });
+
+      return this;
+
+   }
+
+
+   public empty() {
+
+      this.each(el => {
+         
+         while (el.firstChild) {
+
+            el.removeChild(el.firstChild);
+         
+         }
 
       });
 
