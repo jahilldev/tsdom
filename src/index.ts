@@ -408,6 +408,17 @@ export class TSDomObject {
    }
 
 
+   public remove() {
+
+      this.each(el => {
+
+         el.parentNode.removeChild(el);
+
+      });
+
+   }
+
+
    private query(qry: string, ctx: Element | Document) {
 
       const doc = this.document;

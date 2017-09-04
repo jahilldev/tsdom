@@ -36,6 +36,7 @@ export declare class TSDomObject {
     append(html: string): this;
     prepend(html: string): this;
     empty(): this;
+    remove(): void;
     private query(qry, ctx);
     private findEvent(ev);
     private delegateEvent(el, qry, cb);

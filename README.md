@@ -32,12 +32,15 @@ Once you've selected an element or elements, you can chain the following methods
 - `el.on("click", ".yourClass", (ev) => { // do something })`
 - `el.off("click")`
 
-And the following are return methods
+The following are return methods
 - `el.hasClass("active")`
 - `el.text()`
 - `el.text("Lorem ipsum")`
 - `el.html()`
 - `el.html("<div>Lorem ipsum</div>")`
+
+And these are NON return methods
+- `el.remove()`
 ### Types
 The package exports the following types for use in your app:
 - `import tsdom, { TSDom, TSDomObject } from 'tsdom'`
