@@ -1,6 +1,6 @@
 # tsdom
 Fast, lightweight DOM manipulation utility with TypeScript definitions.
-**1.26kb** gzipped.
+**1.28kb** gzipped.
 ### Install
 `npm install --save tsdom`
 ### Setup
@@ -20,14 +20,14 @@ Once you've selected an element or elements, you can chain the following methods
 - `el.find("#yourSelector")`
 - `el.closest(".yourSelector")`
 - `el.each(e => { // do something })`
-- `el.append("<p>Lorem ipsum</p>")`
-- `el.prepend("<p>Lorem ipsum</p>")`
+- `el.append("<p>Lorem ipsum</p>" | HTMLElement)`
+- `el.prepend("<p>Lorem ipsum</p>" | HTMLElement)`
 - `el.empty()`
 - `el.addClass("yourClass")`
 - `el.removeClass("yourClass")`
 - `el.toggleClass("yourClass")`
-- `el.css({ "opacity": "0" })`
-- `el.attr({ "title": "Your new title" })`
+- `el.css({ opacity: "0" })`
+- `el.attr({ title: "Your new title" })`
 - `el.on("click", (ev) => { // do something })`
 - `el.on("click", ".yourClass", (ev) => { // do something })`
 - `el.off("click")`

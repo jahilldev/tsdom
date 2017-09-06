@@ -365,11 +365,17 @@ export class TSDomObject {
    }
 
 
-   public append(html: string) {
+   public append(item: string | HTMLElement) {
 
       this.each(el => {
 
-         el.insertAdjacentHTML('beforeend', html);
+         if(typeof item === 'string') {
+
+            return el.insertAdjacentHTML('beforeend', item);
+
+         }
+
+         el.appendChild(item);
 
       });
 
@@ -378,11 +384,17 @@ export class TSDomObject {
    }
 
 
-   public prepend(html: string) {
+   public prepend(item: string | HTMLElement) {
 
       this.each(el => {
 
-         el.insertAdjacentHTML('afterbegin', html);
+         if(typeof item === 'string') {
+
+            return el.insertAdjacentHTML('afterbegin', item);
+
+         }
+
+         el.insertBefore(item, el.firstChild);
 
       });
 
