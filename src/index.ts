@@ -419,6 +419,21 @@ export class TSDomObject {
    }
 
 
+   public toArray() {
+
+      const array: HTMLElement[] = [];
+
+      this.each(el => {
+
+         array.push(el);
+
+      });
+
+      return array;
+
+   }
+
+
    private query(qry: string, ctx: Element | Document) {
 
       const doc = this.document;

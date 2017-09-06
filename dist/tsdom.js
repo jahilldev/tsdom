@@ -201,6 +201,13 @@ var TSDomObject = (function () {
             el.parentNode.removeChild(el);
         });
     };
+    TSDomObject.prototype.toArray = function () {
+        var array = [];
+        this.each(function (el) {
+            array.push(el);
+        });
+        return array;
+    };
     TSDomObject.prototype.query = function (qry, ctx) {
         var doc = this.document;
         var test;

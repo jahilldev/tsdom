@@ -38,6 +38,7 @@ The following are return methods
 - `el.text("Lorem ipsum")`
 - `el.html()`
 - `el.html("<div>Lorem ipsum</div>")`
+- `el.toArray()`
 
 And these are NON return methods
 - `el.remove()`
