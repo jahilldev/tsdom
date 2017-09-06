@@ -365,7 +365,7 @@ export class TSDomObject {
    }
 
 
-   public append(item: string | HTMLElement) {
+   public append(item: string | Node | HTMLElement) {
 
       this.each(el => {
 
@@ -384,7 +384,7 @@ export class TSDomObject {
    }
 
 
-   public prepend(item: string | HTMLElement) {
+   public prepend(item: string | Node | HTMLElement) {
 
       this.each(el => {
 

@@ -20,8 +20,8 @@ Once you've selected an element or elements, you can chain the following methods
 - `el.find("#yourSelector")`
 - `el.closest(".yourSelector")`
 - `el.each(e => { // do something })`
-- `el.append("<p>Lorem ipsum</p>" | HTMLElement)`
-- `el.prepend("<p>Lorem ipsum</p>" | HTMLElement)`
+- `el.append("<p>Lorem ipsum</p>" | Node | HTMLElement)`
+- `el.prepend("<p>Lorem ipsum</p>" | Node | HTMLElement)`
 - `el.empty()`
 - `el.addClass("yourClass")`
 - `el.removeClass("yourClass")`

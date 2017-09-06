@@ -33,8 +33,8 @@ export declare class TSDomObject {
     off(ev: string): this;
     text(val?: string): string;
     html(val?: string): string;
-    append(item: string | HTMLElement): this;
-    prepend(item: string | HTMLElement): this;
+    append(item: string | Node | HTMLElement): this;
+    prepend(item: string | Node | HTMLElement): this;
     empty(): this;
     remove(): void;
     toArray(): HTMLElement[];
