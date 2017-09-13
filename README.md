@@ -1,6 +1,6 @@
 # tsdom
 Fast, lightweight DOM manipulation utility with TypeScript definitions.
-**1.28kb** gzipped.
+**1.8kb** gzipped.
 ### Install
 `npm install --save tsdom`
 ### Setup
@@ -28,8 +28,8 @@ Once you've selected an element or elements, you can chain the following methods
 - `el.toggleClass("yourClass")`
 - `el.css({ opacity: "0" })`
 - `el.attr({ title: "Your new title" })`
-- `el.on("click", (ev: Event, el: Element) => { // do something })`
-- `el.on("click", ".yourClass", (ev: Event, el: Element) => { // do something })`
+- `el.on("click", (ev: Event, el: HTMLElement) => { // do something })`
+- `el.on("click", ".yourClass", (ev: Event, el: HTMLElement) => { // do something })`
 - `el.off("click")`
 
 The following are return methods

@@ -35,7 +35,6 @@ export class Instance {
 
 
    public length: number;
-   private document: Document;
    private meta: IMeta;
    private events: any;
 
@@ -44,7 +43,6 @@ export class Instance {
 
       let els: any;
 
-      this.document = document;
       this.meta = meta || {};
       this.events = event.registry();
 
@@ -77,7 +75,7 @@ export class Instance {
 
    }
 
-
+   
    public find (qry: string) {
 
       return new Instance(qry, this[0], { owner: this });
@@ -87,8 +85,7 @@ export class Instance {
 
    public closest(qry: string) {
 
-      const doc = this.document;
-      const match = doc.querySelectorAll(qry);
+      const match = document.querySelectorAll(qry);
 
       let el = this[0];
       let i;

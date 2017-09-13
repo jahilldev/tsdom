@@ -39,7 +39,7 @@ function query(
 
       if ((match = test[1])) {
 
-         return (ctx as Document).getElementById(match);
+         return document.getElementById(match);
 
       }
 
