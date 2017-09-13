@@ -4,13 +4,22 @@ import * as event from './event';
 
 /* -----------------------------------
  *
- * Meta
+ * IMeta
  *
  * -------------------------------- */
 
 export interface IMeta {
    owner?: Instance;
 }
+
+
+/* -----------------------------------
+ *
+ * IHandler
+ *
+ * -------------------------------- */
+
+export type IHandler = (ev: Event, el: HTMLElement) => void;
 
 
 /* -----------------------------------
@@ -235,7 +244,7 @@ export class Instance {
    }
 
 
-   public on (ev: string, op1: string | EventListener, op2?: EventListener) {
+   public on (ev: string, op1: string | IHandler, op2?: IHandler) {
 
       const self = this;
       const { events } = this;
@@ -251,7 +260,7 @@ export class Instance {
 
          if(direct) {
 
-            cb = event.direct(op1 as EventListener);
+            cb = event.direct(op1 as IHandler);
 
          }
 
