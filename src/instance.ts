@@ -34,9 +34,9 @@ export class Instance {
    [index: number]: HTMLElement;
 
 
+   public length: number;
    private document: Document;
    private meta: IMeta;
-   private length: number;
    private events: any;
 
 
