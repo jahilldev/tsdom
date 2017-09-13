@@ -38,7 +38,7 @@ module.exports = function (config, gulp) {
             debug: true,
             standalone: 'tsdom',
             entries: [
-               'src/include.js'
+               config.path.src + 'include.js'
             ],
             cache: {},
             packageCache: {}

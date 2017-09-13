@@ -35,9 +35,10 @@ module.exports = function (config, gulp) {
          config.path.dist + 'tsdom.js*',
       ]).then(function() {
 
-         var result = gulp.src(
-            config.path.src + 'index.ts'
-         )
+         var result = gulp.src([
+            // config.path.src + 'index.ts',
+            config.path.src + '**/*.ts'
+         ])
          .pipe(project());
 
          return merge([
@@ -52,17 +53,14 @@ module.exports = function (config, gulp) {
                )
             )
             .pipe(
-               rename('tsdom.js')
-            )
-            .pipe(
                gulp.dest(
                   config.path.dist
                )
             ),
             result.dts
-            .pipe(
-               rename('tsdom.d.ts')
-            )
+            // .pipe(
+            //    rename('tsdom.d.ts')
+            // )
             .pipe(
                gulp.dest(
                   config.path.dist

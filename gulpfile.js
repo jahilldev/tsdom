@@ -20,7 +20,7 @@ function task(task) {
  *
  * -------------------------------- */
 
-gulp.task('js:main', task('js-main'));
+gulp.task('js:module', task('js-module'));
 gulp.task('js:include', task('js-include'));
 
 
@@ -31,6 +31,6 @@ gulp.task('js:include', task('js-include'));
  * -------------------------------- */
 
 gulp.task('default', sequence(
-   ['js:main', 'js:include']
+   ['js:module', 'js:include']
    // 'watch'
 ));
