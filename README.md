@@ -28,8 +28,8 @@ Once you've selected an element or elements, you can chain the following methods
 - `el.toggleClass("yourClass")`
 - `el.css({ opacity: "0" })`
 - `el.attr({ title: "Your new title" })`
-- `el.on("click", (ev, el) => { // do something })`
-- `el.on("click", ".yourClass", (ev, el) => { // do something })`
+- `el.on("click", (ev: Event, el: HTMLElement) => { // do something })`
+- `el.on("click", ".yourClass", (ev: Event, el: HTMLElement) => { // do something })`
 - `el.off("click")`
 
 The following are return methods
