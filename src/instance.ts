@@ -214,7 +214,7 @@ export class Instance {
 
             var reg = new RegExp('(\\s|^)' + str + '(\\s|$)');
 
-            el.className = el.className.replace(reg, ' ');
+            el.className = el.className.replace(reg, '');
 
          }
 
