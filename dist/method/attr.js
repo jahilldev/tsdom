@@ -1,0 +1,1 @@
+"use strict";function attr(t){return this.each(function(e){for(var r in t){var i=t[r];e.setAttribute(r,i)}}),this}Object.defineProperty(exports,"__esModule",{value:!0}),exports.attr=attr;

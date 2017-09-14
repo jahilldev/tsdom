@@ -1,0 +1,1 @@
+"use strict";function addClass(s){var a=this;return a.each(function(e){a.hasClass(s)||(e.className+=" "+s)}),this}Object.defineProperty(exports,"__esModule",{value:!0}),exports.addClass=addClass;

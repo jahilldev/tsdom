@@ -1,0 +1,1 @@
+"use strict";function remove(){this.each(function(e){e.parentNode.removeChild(e)})}Object.defineProperty(exports,"__esModule",{value:!0}),exports.remove=remove;

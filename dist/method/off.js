@@ -1,0 +1,1 @@
+"use strict";function off(e){var t=this,r=t.events;return t.each(function(t){var o=r.find(e);void 0!==o&&t.removeEventListener(e,o.handler,!0)}),r.remove(e),this}Object.defineProperty(exports,"__esModule",{value:!0}),exports.off=off;

@@ -1,0 +1,1 @@
+"use strict";function closest(e){var t,n=this,s=document.querySelectorAll(e),r=n[0];do{for(t=s.length;--t>=0&&s.item(t)!==r;);}while(t<0&&(r=r.parentElement));return new instance_1.Instance(r)}Object.defineProperty(exports,"__esModule",{value:!0});var instance_1=require("../instance");exports.closest=closest;

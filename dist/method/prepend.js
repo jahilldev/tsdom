@@ -1,0 +1,1 @@
+"use strict";function prepend(e){return this.each(function(t){if("string"==typeof e)return t.insertAdjacentHTML("afterbegin",e);t.insertBefore(e,t.firstChild)}),this}Object.defineProperty(exports,"__esModule",{value:!0}),exports.prepend=prepend;

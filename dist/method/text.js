@@ -1,0 +1,1 @@
+"use strict";function text(e){var t=this;return void 0==e?t[0].innerText:(t.each(function(t){t.innerHTML=e}),e)}Object.defineProperty(exports,"__esModule",{value:!0}),exports.text=text;
