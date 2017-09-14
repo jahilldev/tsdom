@@ -1,5 +1,6 @@
 import * as utility from './utility';
 import * as event from './event';
+import { IEvents } from './event/registry';
 
 
 /* -----------------------------------
@@ -36,7 +37,7 @@ export class Instance {
 
    public length: number;
    private meta: IMeta;
-   private events: any;
+   private events: IEvents;
 
 
    public constructor(qry: string | HTMLElement, ctx?: Element, meta?: IMeta) {

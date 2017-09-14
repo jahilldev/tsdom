@@ -1,4 +1,4 @@
-import { Instance, IMeta } from './instance';
+import { Instance } from './instance';
 
 
 /* -----------------------------------
@@ -7,8 +7,4 @@ import { Instance, IMeta } from './instance';
  *
  * -------------------------------- */
 
-export default (qry: string | HTMLElement, ctx?: HTMLElement) => {
-
-   return new Instance(qry, ctx);
-   
-};
+export default (qry: string | HTMLElement, ctx?: HTMLElement) => new Instance(qry, ctx);

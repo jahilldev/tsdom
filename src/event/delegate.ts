@@ -17,7 +17,7 @@ function delegate(
       
       const $elements = new Instance(query, scope);
 
-      let target = null;
+      let el = null;
       let hit = false;
 
       $elements.each(_el => {
@@ -27,7 +27,7 @@ function delegate(
          if(test == _el) {
 
             hit = true;
-            target = test;
+            el = test;
 
             return;
 
@@ -40,7 +40,7 @@ function delegate(
             if(test == _el) {
 
                hit = true;
-               target = test;
+               el = test;
 
             }
             
@@ -50,7 +50,7 @@ function delegate(
 
       if(hit) {
          
-         cb(ev, target);
+         cb(ev, el);
 
       }
       
