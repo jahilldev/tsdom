@@ -43,7 +43,7 @@ The following are return methods
 And these are NON return methods
 - `el.remove()`
 ### Types
-The package exports the following types for use in your app:
-- `import tsdom, { TSDom, TSDomObject } from 'tsdom'`
-  - `TSDom` == `tsdom`
-  - `TSDomObject` == `tsdom("#yourSelector")`
+The package exports the following type namespace for use in your app:
+- `import tsdom, { TSDom } from 'tsdom'`
+  - `TSDom.Init` == `tsdom`
+  - `TSDom.Object` == `tsdom("#yourSelector")`

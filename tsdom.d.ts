@@ -1,4 +1,4 @@
-import { Instance, IMeta } from './src/instance';
+import { Instance, IMeta } from './src/index';
 
 
 /* -----------------------------------

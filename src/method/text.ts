@@ -1,4 +1,4 @@
-import { Instance } from '../instance';
+import { Instance } from '../index';
 import * as event from '../event';
 
 
