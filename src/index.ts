@@ -1,6 +1,5 @@
 import * as utility from './utility';
 import * as event from './event';
-import * as method from './method';
 import { IEvents } from './event/registry';
 
 
@@ -11,7 +10,7 @@ import { IEvents } from './event/registry';
  * -------------------------------- */
 
 export interface IMeta {
-   owner?: Instance;
+   owner?: Dom;
 }
 
 
@@ -30,16 +29,16 @@ export type IHandler = (ev: Event, el: HTMLElement) => void;
  *
  * -------------------------------- */
 
-export default (qry: string | HTMLElement, ctx?: HTMLElement) => new Instance(qry, ctx);
+export default (qry: string | HTMLElement, ctx?: HTMLElement) => new Dom(qry, ctx);
 
 
 /* -----------------------------------
  *
- * Instance
+ * Dom
  *
  * -------------------------------- */
 
-export class Instance {
+export class Dom {
    
    
    [index: number]: HTMLElement;
@@ -87,24 +86,373 @@ export class Instance {
    }
 
 
-   public find = method.find
-   public closest = method.closest
-   public each = method.each
-   public css = method.css
-   public attr = method.attr
-   public hasClass = method.hasClass
-   public addClass = method.addClass
-   public removeClass = method.removeClass
-   public toggleClass = method.toggleClass
-   public on = method.on
-   public off = method.off
-   public text = method.text
-   public html = method.html
-   public append = method.append
-   public prepend = method.prepend
-   public empty = method.empty
-   public remove = method.remove
-   public toArray = method.toArray
+   public find(qry: string) {
+      
+      return new Dom(qry, this[0], { owner: this });
+
+   }
+
+
+   public closest(qry: string) {
+
+      const match = document.querySelectorAll(qry);
+      
+      let el = this[0];
+      let i;
+   
+      do {
+   
+         i = match.length;
+   
+         while (--i >= 0 && match.item(i) !== el) {};
+   
+      } while (
+   
+         (i < 0) && (el = el.parentElement)
+         
+      );
+      
+      return new Dom(el);
+
+   }
+
+
+   public each(cb: (el: HTMLElement) => void) {
+
+      for(let i = 0, len = this.length; i < len;) {
+         
+         let el: HTMLElement = this[i];
+   
+         if(cb.call(this, this[i], i++) == false) {
+            break;
+         }
+   
+      }
+   
+      return this;
+
+   }
+
+
+   public css(obj: {[index: string]: string}) {
+
+      this.each(el => {
+         
+         for(let key in obj) {
+   
+            const val = obj[key];
+   
+            el.style.setProperty(key, val);
+   
+         }
+   
+      });
+   
+      return this;
+
+   }
+
+
+   public attr(obj: {[index: string]: string}) {
+
+      this.each(el => {
+         
+         for(let key in obj) {
+   
+            const val = obj[key];
+   
+            el.setAttribute(key, val);
+   
+         }
+   
+      });
+   
+      return this;
+
+   }
+
+
+   public hasClass(str: string) {
+
+      let result = false;
+      
+      this.each(el => {
+   
+         const value = ` ${str} `;
+         const clean = (` ${el.className} `).replace(/[\n\t]/g, ' ');
+   
+         if(clean.indexOf(value) > -1) {
+   
+            result = true;
+   
+         }
+   
+      });
+   
+      return result;
+
+   }
+
+
+   public addClass(str: string) {
+
+      this.each(el => {
+         
+         if(!this.hasClass(str)) {
+   
+            el.className += ' ' + str;
+   
+         }
+   
+      });
+   
+      return this;
+
+   }
+
+
+   public removeClass(str: string) {
+
+      this.each(el => {
+         
+         if(this.hasClass(str)) {
+   
+            var reg = new RegExp('(\\s|^)' + str + '(\\s|$)');
+   
+            el.className = el.className.replace(reg, '');
+   
+         }
+   
+      });
+   
+      return this;
+
+   }
+
+
+   public toggleClass(str: string) {
+
+      if(this.hasClass(str)) {
+         
+         this.removeClass(str);
+   
+      } else {
+   
+         this.addClass(str);
+   
+      }
+   
+      return this;
+
+   }
+
+
+   public on(ev: string, op1: string | IHandler, op2?: IHandler) {
+
+      const { events } = this;
+      
+      const direct = typeof op1 === 'function' && op2 === undefined;
+      const delegate = typeof op1 === 'string' && typeof op2 === 'function';
+   
+      this.off(ev);
+   
+      this.each(el => {
+   
+         let cb = null;
+   
+         if(direct) {
+   
+            cb = event.direct(op1 as IHandler);
+   
+         }
+   
+         if(delegate) {
+   
+            cb = event.delegate(el, op1 as string, op2);
+   
+         }
+   
+         if(cb) {
+   
+            el.addEventListener(ev, cb, true);
+   
+            events.add({
+               type: ev,
+               handler: cb
+            });
+   
+         } else {
+   
+            throw new Error('TSDom.on: Invalid Arguments');
+   
+         }
+   
+      });
+   
+      return this;
+
+   }
+
+
+   public off(ev: string) {
+
+      const { events } = this; 
+
+      this.each(el => {
+   
+         const active = events.find(ev);
+   
+         if(active !== undefined) {
+   
+            el.removeEventListener(ev, active.handler, true);
+            
+         }
+   
+      });
+   
+      events.remove(ev);
+   
+      return this;
+
+   }
+
+
+   public text(val?: string) {
+
+      if(val == undefined) {
+         
+         return this[0].innerText;
+   
+      }
+   
+      this.each(el => {
+         
+         el.innerHTML = val;
+   
+      });
+   
+      return this;
+
+   }
+
+
+   public data(key: string, val?: string) {
+      
+      if(val == undefined) {
+
+         return this[0].getAttribute(`data-${key}`);
+
+      }
+
+      this.each(el => {
+
+         el.setAttribute(`data-${key}`, val);
+
+      });
+
+      return this;
+      
+   }
+
+
+   public html(val?: string) {
+
+      if(val == undefined) {
+         
+         return this[0].innerHTML;
+   
+      }
+   
+      this.each(el => {
+   
+         el.innerHTML = val;
+   
+      });
+   
+      return this;
+
+   }
+
+
+   public append(item: string | Node | HTMLElement) {
+
+      this.each(el => {
+         
+         if(typeof item === 'string') {
+   
+            return el.insertAdjacentHTML('beforeend', item);
+   
+         }
+   
+         el.appendChild(item);
+   
+      });
+   
+      return this;
+
+   }
+
+
+   public prepend(item: string | Node | HTMLElement) {
+
+      this.each(el => {
+         
+         if(typeof item === 'string') {
+   
+            return el.insertAdjacentHTML('afterbegin', item);
+   
+         }
+   
+         el.insertBefore(item, el.firstChild);
+   
+      });
+   
+      return this;
+
+   }
+
+
+   public empty() {
+
+      this.each(el => {
+         
+         while (el.firstChild) {
+   
+            el.removeChild(el.firstChild);
+         
+         }
+   
+      });
+   
+      return this;
+
+   }
+
+
+   public remove() {
+
+      this.each(el => {
+         
+         el.parentNode.removeChild(el);
+   
+      });
+
+   }
+
+
+   public toArray() {
+
+      const array: HTMLElement[] = [];
+      
+      this.each(el => {
+   
+         array.push(el);
+   
+      });
+   
+      return array;
+
+   }
 
    
 }

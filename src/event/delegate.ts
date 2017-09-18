@@ -1,4 +1,4 @@
-import { Instance } from '../index';
+import { Dom } from '../index';
 
 
 /* -----------------------------------
@@ -15,7 +15,7 @@ function delegate(
 
    return (ev: Event) => {
       
-      const $elements = new Instance(query, scope);
+      const $elements = new Dom(query, scope);
 
       let el = null;
       let hit = false;

@@ -1,4 +1,4 @@
-import { Instance, IMeta } from './src/index';
+import { Dom, IMeta } from './src/index';
 
 
 /* -----------------------------------
@@ -10,10 +10,10 @@ import { Instance, IMeta } from './src/index';
 export declare namespace TSDom {
 
    export interface Init {
-      (qry: string | HTMLElement, ctx?: Element, meta?: IMeta): Instance;
+      (qry: string | HTMLElement, ctx?: Element, meta?: IMeta): Dom;
    }
 
-   export class Object extends Instance {}
+   export class Object extends Dom {}
 
 }
 
@@ -24,4 +24,4 @@ export declare namespace TSDom {
  *
  * -------------------------------- */
 
-export default (qry: string | HTMLElement, ctx?: HTMLElement) => new Instance(qry, ctx);
+export default (qry: string | HTMLElement, ctx?: HTMLElement) => new Dom(qry, ctx);

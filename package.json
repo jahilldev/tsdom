@@ -1,6 +1,6 @@
 {
   "name": "tsdom",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Fast, lightweight JavaScript DOM manipulation utility",
   "main": "./dist/index.js",
   "types": "./tsdom.d.ts",

@@ -36,6 +36,8 @@ The following are return methods
 - `el.hasClass("active")`
 - `el.text()`
 - `el.text("Lorem ipsum")`
+- `el.data("key")`
+- `el.data("key", "value")`
 - `el.html()`
 - `el.html("<div>Lorem ipsum</div>")`
 - `el.toArray()`
