@@ -10,7 +10,7 @@ import { IEvents } from './event/registry';
  * -------------------------------- */
 
 export interface IMeta {
-   owner?: Dom;
+   owner?: Instance;
 }
 
 
@@ -29,16 +29,16 @@ export type IHandler = (ev: Event, el: HTMLElement) => void;
  *
  * -------------------------------- */
 
-export default (qry: string | HTMLElement, ctx?: HTMLElement) => new Dom(qry, ctx);
+export default (qry: string | HTMLElement, ctx?: HTMLElement) => new Instance(qry, ctx);
 
 
 /* -----------------------------------
  *
- * Dom
+ * Instance
  *
  * -------------------------------- */
 
-export class Dom {
+export class Instance {
    
    
    [index: number]: HTMLElement;
@@ -88,7 +88,7 @@ export class Dom {
 
    public find(qry: string) {
       
-      return new Dom(qry, this[0], { owner: this });
+      return new Instance(qry, this[0], { owner: this });
 
    }
 
@@ -112,7 +112,7 @@ export class Dom {
          
       );
       
-      return new Dom(el);
+      return new Instance(el);
 
    }
 
