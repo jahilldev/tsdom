@@ -1,1 +1,1 @@
-"use strict";function direct(e){return function(t){var r=t.target;e(t,r)}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.direct=direct;
+"use strict";function direct(e){return function(r){var t=r.currentTarget;e(r,t)}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.direct=direct;

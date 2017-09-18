@@ -12,7 +12,7 @@ function direct(
 
    return (ev: Event) => {
       
-      const el = ev.target as HTMLElement;
+      const el = ev.currentTarget as HTMLElement;
 
       cb(ev, el);
       
