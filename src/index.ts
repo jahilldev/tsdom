@@ -331,7 +331,7 @@ export class Instance {
    
       });
    
-      return this;
+      return val;
 
    }
 
@@ -350,7 +350,7 @@ export class Instance {
 
       });
 
-      return this;
+      return val;
       
    }
 
@@ -369,7 +369,7 @@ export class Instance {
    
       });
    
-      return this;
+      return val;
 
    }
 
