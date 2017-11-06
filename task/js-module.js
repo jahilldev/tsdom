@@ -36,7 +36,6 @@ module.exports = function (config, gulp) {
       ]).then(function() {
 
          var result = gulp.src([
-            // config.path.src + 'index.ts',
             config.path.src + '**/*.ts'
          ])
          .pipe(project());
@@ -58,9 +57,6 @@ module.exports = function (config, gulp) {
                )
             ),
             result.dts
-            // .pipe(
-            //    rename('tsdom.d.ts')
-            // )
             .pipe(
                gulp.dest(
                   config.path.dist

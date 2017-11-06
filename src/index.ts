@@ -1,6 +1,6 @@
 import * as utility from './utility';
 import * as event from './event';
-import { IEvents } from './event/registry';
+import { IHandler, IEvents } from './event/registry';
 
 
 /* -----------------------------------
@@ -12,24 +12,6 @@ import { IEvents } from './event/registry';
 export interface IMeta {
    owner?: Instance;
 }
-
-
-/* -----------------------------------
- *
- * IHandler
- *
- * -------------------------------- */
-
-export type IHandler = (ev: Event, el: HTMLElement) => void;
-
-
-/* -----------------------------------
- *
- * Constructor
- *
- * -------------------------------- */
-
-export default (qry: string | HTMLElement, ctx?: HTMLElement) => new Instance(qry, ctx);
 
 
 /* -----------------------------------
@@ -456,3 +438,29 @@ export class Instance {
 
    
 }
+
+
+/* -----------------------------------
+ *
+ * Namespace
+ *
+ * -------------------------------- */
+
+export declare namespace TSDom {
+
+    export interface Init {
+        (qry: string | HTMLElement, ctx?: Element, meta?: IMeta): Instance;
+    }
+
+    export class Object extends Instance {}
+
+}
+
+
+/* -----------------------------------
+ *
+ * Constructor
+ *
+ * -------------------------------- */
+
+export default (qry: string | HTMLElement, ctx?: HTMLElement) => new Instance(qry, ctx);
