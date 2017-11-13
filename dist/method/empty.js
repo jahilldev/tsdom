@@ -1,1 +1,0 @@
-"use strict";function empty(){return this.each(function(e){for(;e.firstChild;)e.removeChild(e.firstChild)}),this}Object.defineProperty(exports,"__esModule",{value:!0}),exports.empty=empty;

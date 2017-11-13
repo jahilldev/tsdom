@@ -1,1 +1,0 @@
-"use strict";function removeClass(e){var s=this;return s.each(function(a){if(s.hasClass(e)){var r=new RegExp("(\\s|^)"+e+"(\\s|$)");a.className=a.className.replace(r,"")}}),this}Object.defineProperty(exports,"__esModule",{value:!0}),exports.removeClass=removeClass;

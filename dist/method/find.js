@@ -1,1 +1,0 @@
-"use strict";function find(e){var n=this;return new index_1.Instance(e,n[0],{owner:n})}Object.defineProperty(exports,"__esModule",{value:!0});var index_1=require("../index");exports.find=find;

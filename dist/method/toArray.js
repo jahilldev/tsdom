@@ -1,1 +1,0 @@
-"use strict";function toArray(){var r=[];return this.each(function(t){r.push(t)}),r}Object.defineProperty(exports,"__esModule",{value:!0}),exports.toArray=toArray;

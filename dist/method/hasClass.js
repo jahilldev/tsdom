@@ -1,1 +1,0 @@
-"use strict";function hasClass(s){var e=!1;return this.each(function(a){var t=" "+s+" ";(" "+a.className+" ").replace(/[\n\t]/g," ").indexOf(t)>-1&&(e=!0)}),e}Object.defineProperty(exports,"__esModule",{value:!0}),exports.hasClass=hasClass;

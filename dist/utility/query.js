@@ -1,1 +1,30 @@
-"use strict";function query(e,r){var t,u;if(t=regex.exec(e)){if(u=t[3])return r.getElementsByClassName(u);if(u=t[2])return r.getElementsByTagName(u);if(u=t[1])return document.getElementById(u)}return r.querySelectorAll(e)}Object.defineProperty(exports,"__esModule",{value:!0});var regex=/^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/;exports.query=query;
+"use strict";
+/* -----------------------------------
+ *
+ * Variables
+ *
+ * -------------------------------- */
+Object.defineProperty(exports, "__esModule", { value: true });
+var regex = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/;
+/* -----------------------------------
+ *
+ * Query
+ *
+ * -------------------------------- */
+function query(qry, ctx) {
+    var test;
+    var match;
+    if ((test = regex.exec(qry))) {
+        if ((match = test[3])) {
+            return ctx.getElementsByClassName(match);
+        }
+        if ((match = test[2])) {
+            return ctx.getElementsByTagName(match);
+        }
+        if ((match = test[1])) {
+            return document.getElementById(match);
+        }
+    }
+    return ctx.querySelectorAll(qry);
+}
+exports.query = query;
