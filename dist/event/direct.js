@@ -1,14 +1,1 @@
-"use strict";
-/* -----------------------------------
- *
- * Direct
- *
- * -------------------------------- */
-Object.defineProperty(exports, "__esModule", { value: true });
-function direct(cb) {
-    return function (ev) {
-        var el = ev.currentTarget;
-        cb(ev, el);
-    };
-}
-exports.direct = direct;
+"use strict";function direct(e){return function(r){var t=r.currentTarget;e(r,t)}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.direct=direct;
