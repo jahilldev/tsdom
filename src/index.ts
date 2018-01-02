@@ -236,8 +236,6 @@ export class Instance {
       const direct = typeof op1 === 'function' && op2 === undefined;
       const delegate = typeof op1 === 'string' && typeof op2 === 'function';
    
-      this.off(ev);
-   
       this.each(el => {
    
          let cb = null;
