@@ -1,1 +1,7 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var query_1=require("./query");exports.query=query_1.query;
+"use strict";
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(require("./query"));
+__export(require("./hasClass"));

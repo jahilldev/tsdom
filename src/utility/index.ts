@@ -1,12 +1,2 @@
-import { query } from './query';
-
-
-/* -----------------------------------
- *
- * Events
- *
- * -------------------------------- */
-
-export {
-   query
-};
+export * from './query';
+export * from './hasClass';

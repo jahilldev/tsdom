@@ -157,17 +157,10 @@ export class Instance {
    public hasClass(str: string) {
 
       let result = false;
-      
+
       this.each(el => {
    
-         const value = ` ${str} `;
-         const clean = (` ${el.className} `).replace(/[\n\t]/g, ' ');
-   
-         if(clean.indexOf(value) > -1) {
-   
-            result = true;
-   
-         }
+         result = utility.hasClass(el, str);
    
       });
    
@@ -179,9 +172,11 @@ export class Instance {
    public addClass(str: string) {
 
       this.each(el => {
-         
-         if(!this.hasClass(str)) {
-   
+
+         const state = utility.hasClass(el, str);
+
+         if(!state) {
+
             el.className += ' ' + str;
    
          }
@@ -197,7 +192,9 @@ export class Instance {
 
       this.each(el => {
          
-         if(this.hasClass(str)) {
+         const state = utility.hasClass(el, str);
+         
+         if(state) {
    
             var reg = new RegExp('(\\s|^)' + str + '(\\s|$)');
    

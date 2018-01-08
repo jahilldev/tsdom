@@ -1,1 +1,39 @@
-"use strict";function registry(){return new Registry}Object.defineProperty(exports,"__esModule",{value:!0});var Registry=function(){function t(){this.list=[]}return t.prototype.find=function(t){return this.list.filter(function(r){return r.type===t})[0]},t.prototype.add=function(t){this.list.push(t)},t.prototype.remove=function(t){var r=this.list;this.list=r.filter(function(r){return r.type!==t})},t}();exports.Registry=Registry,exports.registry=registry;
+"use strict";
+/* -----------------------------------
+ *
+ * IEvents
+ *
+ * -------------------------------- */
+Object.defineProperty(exports, "__esModule", { value: true });
+/* -----------------------------------
+ *
+ * Registry
+ *
+ * -------------------------------- */
+var Registry = /** @class */ (function () {
+    function Registry() {
+        this.list = [];
+    }
+    Registry.prototype.find = function (ev) {
+        var list = this.list;
+        return list.filter(function (_ev) { return _ev.type === ev; })[0];
+    };
+    Registry.prototype.add = function (ev) {
+        this.list.push(ev);
+    };
+    Registry.prototype.remove = function (ev) {
+        var list = this.list;
+        this.list = list.filter(function (_ev) { return _ev.type !== ev; });
+    };
+    return Registry;
+}());
+exports.Registry = Registry;
+/* -----------------------------------
+ *
+ * Function
+ *
+ * -------------------------------- */
+function registry() {
+    return new Registry();
+}
+exports.registry = registry;

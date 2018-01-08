@@ -1,2 +1,2 @@
-import { query } from './query';
-export { query };
+export * from './query';
+export * from './hasClass';
