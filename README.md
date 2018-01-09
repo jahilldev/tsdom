@@ -38,6 +38,7 @@ The following are return methods
 - `el.text("Lorem ipsum")`
 - `el.data("key")`
 - `el.data("key", "value")`
+- `el.attr("key")`
 - `el.html()`
 - `el.html("<div>Lorem ipsum</div>")`
 - `el.toArray()`

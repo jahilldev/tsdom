@@ -62,6 +62,10 @@ var Instance = /** @class */ (function () {
         return this;
     };
     Instance.prototype.attr = function (obj) {
+        if (typeof obj === 'string') {
+            var value = this[0].getAttribute(obj);
+            return value;
+        }
         this.each(function (el) {
             for (var key in obj) {
                 var val = obj[key];

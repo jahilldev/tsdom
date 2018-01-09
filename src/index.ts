@@ -135,7 +135,15 @@ export class Instance {
    }
 
 
-   public attr(obj: {[index: string]: string}) {
+   public attr(obj: {[index: string]: string} | string) {
+
+      if(typeof obj === 'string') {
+
+         const value = this[0].getAttribute(obj);
+
+         return value;
+
+      }
 
       this.each(el => {
          
