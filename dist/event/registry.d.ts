@@ -7,7 +7,7 @@ export declare type IHandler = (ev: Event, el: HTMLElement) => void;
 export declare class Registry {
     private list;
     constructor();
-    find(ev: string): IEvent;
+    find(ev: string): IEvent[];
     add(ev: IEvent): void;
     remove(ev: string): void;
 }

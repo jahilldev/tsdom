@@ -67,12 +67,12 @@ var Instance = /** @class */ (function () {
             return value;
         }
         this.each(function (el) {
-            for (var key in obj) {
+            for (var _i = 0, _a = Object.keys(obj); _i < _a.length; _i++) {
+                var key = _a[_i];
                 var val = obj[key];
                 el.setAttribute(key, val);
             }
         });
-        return this;
     };
     Instance.prototype.hasClass = function (str) {
         var result = false;
@@ -137,10 +137,12 @@ var Instance = /** @class */ (function () {
     Instance.prototype.off = function (ev) {
         var events = this.events;
         this.each(function (el) {
-            var active = events.find(ev);
-            if (active !== undefined) {
-                el.removeEventListener(ev, active.handler, true);
-            }
+            var items = events.find(ev);
+            items.forEach(function (item) {
+                if (item !== undefined) {
+                    el.removeEventListener(ev, item.handler, true);
+                }
+            });
         });
         events.remove(ev);
         return this;

@@ -16,7 +16,7 @@ export declare class Instance {
     }): this;
     attr(obj: {
         [index: string]: string;
-    } | string): string | this;
+    } | string): string;
     hasClass(str: string): boolean;
     addClass(str: string): this;
     removeClass(str: string): this;

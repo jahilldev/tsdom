@@ -53,7 +53,7 @@ export class Registry {
 
       const { list } = this;
 
-      return list.filter(_ev => _ev.type === ev)[0];
+      return list.filter(_ev => _ev.type === ev);
 
    }
 

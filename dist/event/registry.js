@@ -16,7 +16,7 @@ var Registry = /** @class */ (function () {
     }
     Registry.prototype.find = function (ev) {
         var list = this.list;
-        return list.filter(function (_ev) { return _ev.type === ev; })[0];
+        return list.filter(function (_ev) { return _ev.type === ev; });
     };
     Registry.prototype.add = function (ev) {
         this.list.push(ev);

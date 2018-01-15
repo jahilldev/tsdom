@@ -1,6 +1,6 @@
 import * as utility from './utility';
 import * as event from './event';
-import { IHandler, IEvents } from './event/registry';
+import { IHandler, IEvents, IEvent } from './event/registry';
 
 
 /* -----------------------------------
@@ -147,7 +147,7 @@ export class Instance {
 
       this.each(el => {
          
-         for(let key in obj) {
+         for(let key of Object.keys(obj)) {
    
             const val = obj[key];
    
@@ -156,8 +156,6 @@ export class Instance {
          }
    
       });
-   
-      return this;
 
    }
 
@@ -285,13 +283,17 @@ export class Instance {
 
       this.each(el => {
    
-         const active = events.find(ev);
-   
-         if(active !== undefined) {
-   
-            el.removeEventListener(ev, active.handler, true);
-            
-         }
+         const items: IEvent[] = events.find(ev);
+
+         items.forEach((item) => {
+
+            if(item !== undefined) {
+      
+               el.removeEventListener(ev, item.handler, true);
+               
+            }
+
+         });
    
       });
    
