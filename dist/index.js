@@ -95,7 +95,11 @@ var Instance = /** @class */ (function () {
             var state = utility.hasClass(el, str);
             if (state) {
                 var reg = new RegExp('(\\s|^)' + str + '(\\s|$)');
-                el.className = el.className.replace(reg, '');
+                console.log('------');
+                console.log('before:', el.className);
+                var val = el.className.replace(reg, ' ').trim();
+                el.className = val.replace(/\s{2,}/g, ' ');
+                console.log('after:', el.className);
             }
         });
         return this;

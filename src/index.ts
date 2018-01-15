@@ -202,9 +202,10 @@ export class Instance {
          
          if(state) {
    
-            var reg = new RegExp('(\\s|^)' + str + '(\\s|$)');
-   
-            el.className = el.className.replace(reg, '');
+            const reg = new RegExp('(\\s|^)' + str + '(\\s|$)');
+            const val = el.className.replace(reg, ' ').trim();
+
+            el.className = val.replace(/\s{2,}/g, ' ');
    
          }
    
