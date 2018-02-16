@@ -34,6 +34,8 @@ Once you've selected an element or elements, you can chain the following methods
 
 The following are return methods
 - `el.hasClass("active")`
+- `el.val()`
+- `el.val("value")`
 - `el.text()`
 - `el.text("Lorem ipsum")`
 - `el.data("key")`

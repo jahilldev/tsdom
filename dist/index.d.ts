@@ -23,6 +23,7 @@ export declare class Instance {
     toggleClass(str: string): this;
     on(ev: string, op1: string | IHandler, op2?: IHandler): this;
     off(ev: string): this;
+    val(val?: string): string;
     text(val?: string): string;
     data(key: string, val?: string): string;
     html(val?: string): string;

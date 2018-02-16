@@ -148,6 +148,17 @@ var Instance = /** @class */ (function () {
         events.remove(ev);
         return this;
     };
+    Instance.prototype.val = function (val) {
+        var el = this[0];
+        if (el.value === undefined) {
+            return null;
+        }
+        if (val === undefined) {
+            return el.value;
+        }
+        el.value = val;
+        return val;
+    };
     Instance.prototype.text = function (val) {
         if (val == undefined) {
             return this[0].innerText;

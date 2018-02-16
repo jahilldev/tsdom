@@ -305,6 +305,29 @@ export class Instance {
    }
 
 
+   public val(val?: string) {
+
+      const el = this[0] as HTMLInputElement;
+
+      if(el.value === undefined) {
+
+         return null;
+
+      }
+
+      if(val === undefined) {
+
+         return el.value;
+
+      }
+
+      el.value = val;
+
+      return val;
+
+   }
+
+
    public text(val?: string) {
 
       if(val == undefined) {
