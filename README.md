@@ -17,6 +17,7 @@ TSDom uses CSS (or jQuery) selector syntax, e,g:
 - `let el = tsdom("[data-attribute]")`
 ### API
 Once you've selected an element or elements, you can chain the following methods:
+- `el.first()`
 - `el.find("#yourSelector")`
 - `el.closest(".yourSelector")`
 - `el.each(e => { // do something })`

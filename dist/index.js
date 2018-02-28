@@ -29,6 +29,9 @@ var Instance = /** @class */ (function () {
                 ;
         }
     }
+    Instance.prototype.first = function () {
+        return new Instance(this[0]);
+    };
     Instance.prototype.find = function (qry) {
         return new Instance(qry, this[0], { owner: this });
     };

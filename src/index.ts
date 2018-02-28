@@ -68,6 +68,13 @@ export class Instance {
    }
 
 
+   public first() {
+
+      return new Instance(this[0]);
+
+   }
+
+
    public find(qry: string) {
       
       return new Instance(qry, this[0], { owner: this });
