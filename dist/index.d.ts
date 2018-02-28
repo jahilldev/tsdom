@@ -8,6 +8,7 @@ export declare class Instance {
     events: IEvents;
     private meta;
     constructor(qry: string | HTMLElement, ctx?: Element, meta?: IMeta);
+    get(key: number): HTMLElement;
     first(): Instance;
     find(qry: string): Instance;
     closest(qry: string): Instance;

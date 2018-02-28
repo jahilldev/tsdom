@@ -34,6 +34,7 @@ Once you've selected an element or elements, you can chain the following methods
 - `el.off("click")`
 
 The following are return methods
+- `el.get(0)`
 - `el.hasClass("active")`
 - `el.val()`
 - `el.val("value")`

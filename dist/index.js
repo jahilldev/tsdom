@@ -29,6 +29,9 @@ var Instance = /** @class */ (function () {
                 ;
         }
     }
+    Instance.prototype.get = function (key) {
+        return this[key];
+    };
     Instance.prototype.first = function () {
         return new Instance(this[0]);
     };

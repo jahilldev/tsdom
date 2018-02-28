@@ -68,6 +68,13 @@ export class Instance {
    }
 
 
+   public get(key: number) {
+
+      return this[key];
+
+   }
+
+
    public first() {
 
       return new Instance(this[0]);
