@@ -155,19 +155,23 @@ var Instance = /** @class */ (function () {
         return this;
     };
     Instance.prototype.val = function (val) {
-        var el = this[0];
-        if (el.value === undefined) {
+        var item = this.get(0);
+        if (item.value === undefined) {
             return null;
         }
         if (val === undefined) {
-            return el.value;
+            return item.value;
         }
-        el.value = val;
+        item.value = val;
         return val;
     };
     Instance.prototype.text = function (val) {
+        var item = this.get(0);
+        if (!item) {
+            return null;
+        }
         if (val == undefined) {
-            return this[0].innerText;
+            return item.innerText;
         }
         this.each(function (el) {
             el.innerHTML = val;
@@ -175,8 +179,12 @@ var Instance = /** @class */ (function () {
         return val;
     };
     Instance.prototype.data = function (key, val) {
+        var item = this.get(0);
+        if (!item) {
+            return null;
+        }
         if (val == undefined) {
-            return this[0].getAttribute("data-" + key);
+            return item.getAttribute("data-" + key);
         }
         this.each(function (el) {
             el.setAttribute("data-" + key, val);
@@ -184,8 +192,12 @@ var Instance = /** @class */ (function () {
         return val;
     };
     Instance.prototype.html = function (val) {
+        var item = this.get(0);
+        if (!item) {
+            return null;
+        }
         if (val == undefined) {
-            return this[0].innerHTML;
+            return item.innerHTML;
         }
         this.each(function (el) {
             el.innerHTML = val;

@@ -321,9 +321,9 @@ export class Instance {
 
    public val(val?: string) {
 
-      const el = this[0] as HTMLInputElement;
+      const item = this.get(0) as HTMLInputElement;
 
-      if(el.value === undefined) {
+      if(item.value === undefined) {
 
          return null;
 
@@ -331,11 +331,11 @@ export class Instance {
 
       if(val === undefined) {
 
-         return el.value;
+         return item.value;
 
       }
 
-      el.value = val;
+      item.value = val;
 
       return val;
 
@@ -344,9 +344,17 @@ export class Instance {
 
    public text(val?: string) {
 
+      const item = this.get(0);
+
+      if(!item) {
+
+         return null;
+
+      }
+
       if(val == undefined) {
          
-         return this[0].innerText;
+         return item.innerText;
    
       }
    
@@ -363,9 +371,17 @@ export class Instance {
 
    public data(key: string, val?: string) {
       
+      const item = this.get(0);
+
+      if(!item) {
+
+         return null;
+
+      }
+
       if(val == undefined) {
 
-         return this[0].getAttribute(`data-${key}`);
+         return item.getAttribute(`data-${key}`);
 
       }
 
@@ -382,9 +398,17 @@ export class Instance {
 
    public html(val?: string) {
 
+      const item = this.get(0);
+
+      if(!item) {
+
+         return null;
+
+      }
+
       if(val == undefined) {
          
-         return this[0].innerHTML;
+         return item.innerHTML;
    
       }
    
