@@ -7,8 +7,8 @@ var index_1 = require("../index");
  *
  * -------------------------------- */
 function delegate(scope, query, cb) {
+    var $elements = new index_1.Instance(query, scope);
     return function (ev) {
-        var $elements = new index_1.Instance(query, scope);
         var el = null;
         var hit = false;
         $elements.each(function (_el) {
