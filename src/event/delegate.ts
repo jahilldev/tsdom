@@ -13,9 +13,9 @@ function delegate(
    cb: (ev: Event, el: HTMLElement) => void
 ) {
 
-   const $elements = new Instance(query, scope);
-
    return (ev: Event) => {
+      
+      const $elements = new Instance(query, scope);
 
       let el = null;
       let hit = false;
