@@ -250,4 +250,4 @@ exports.Instance = Instance;
  * Constructor
  *
  * -------------------------------- */
-exports.default = function (qry, ctx) { return new Instance(qry, ctx); };
+exports.default = (function (qry, ctx) { return new Instance(qry, ctx); });

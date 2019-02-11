@@ -1,16 +1,12 @@
-var browserify = require('browserify');
-var tscript = require('gulp-typescript');
-var uglify = require('gulp-uglify');
-var when = require('gulp-if');
-var rename = require('gulp-rename');
-var sourcemaps = require('gulp-sourcemaps');
-var buffer = require('vinyl-buffer');
-var source = require('vinyl-source-stream');
-var merge = require('merge2');
-var del = require('del');
-var error = require('./error');
-var project = tscript.createProject('./tsconfig.json');
-
+const browserify = require('browserify');
+const tscript = require('gulp-typescript');
+const uglify = require('gulp-uglify');
+const when = require('gulp-if');
+const buffer = require('vinyl-buffer');
+const merge = require('merge2');
+const del = require('del');
+const error = require('./error');
+const project = tscript.createProject('./tsconfig.json');
 
 /* -----------------------------------
  *
@@ -18,8 +14,7 @@ var project = tscript.createProject('./tsconfig.json');
  *
  * -------------------------------- */
 
-var release = process.argv.includes('--release');
-
+const RELEASE = process.argv.includes('--release');
 
 /* -----------------------------------
  *
@@ -27,45 +22,19 @@ var release = process.argv.includes('--release');
  *
  * -------------------------------- */
 
-module.exports = function (config, gulp) {
-
-   return function () {
-
-      return del([
-         config.path.dist + 'tsdom.js*',
-      ]).then(function() {
-
-         var result = gulp.src([
-            config.path.src + '**/*.ts'
-         ])
-         .pipe(project());
+module.exports = function(config, gulp) {
+   return function() {
+      return del([config.path.dist + 'tsdom.js*']).then(function() {
+         const result = gulp.src([config.path.src + '**/*.ts']).pipe(project());
 
          return merge([
             result.js
-            .on('error', error)
-            .pipe(
-               buffer()
-            )
-            .pipe(
-               when(release, 
-                  uglify(config.uglify)
-               )
-            )
-            .pipe(
-               gulp.dest(
-                  config.path.dist
-               )
-            ),
-            result.dts
-            .pipe(
-               gulp.dest(
-                  config.path.dist
-               )
-            )
+               .on('error', error)
+               .pipe(buffer())
+               .pipe(when(RELEASE, uglify(config.uglify)))
+               .pipe(gulp.dest(config.path.dist)),
+            result.dts.pipe(gulp.dest(config.path.dist)),
          ]);
-         
       });
-
    };
-
 };

@@ -1,5 +1,5 @@
-var util = require('gulp-util');
-
+const chalk = require('chalk');
+const log = require('fancy-log');
 
 /* -----------------------------------
  *
@@ -8,12 +8,10 @@ var util = require('gulp-util');
  * -------------------------------- */
 
 module.exports = function(err) {
+   const name = chalk.red(err.name + ':');
+   const message = err.message;
+   const output = chalk.yellow(message.replace(/\n|\r/g, ''));
 
-   var name = util.colors.red(err.name + ':');
-   var message = err.message;
-   var output = util.colors.yellow(message.replace(/\n|\r/g, ''));
-
-   util.log(name);
-   util.log(output);
-   
-}
+   log(name);
+   log(output);
+};

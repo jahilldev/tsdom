@@ -1,2 +1,2 @@
-declare function query(qry: string, ctx: Element | Document): HTMLElement | NodeListOf<Element>;
+declare function query(qry: string, ctx: Element | Document): HTMLElement | HTMLCollectionOf<Element> | NodeListOf<Element>;
 export { query };

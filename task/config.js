@@ -1,5 +1,3 @@
-
-
 /* -----------------------------------
  *
  * Config
@@ -7,17 +5,16 @@
  * -------------------------------- */
 
 module.exports = {
-
    path: {
       root: './',
       dist: './dist/',
-      src: './src/'
+      src: './src/',
    },
 
    uglify: {
       compress: {
          dead_code: true,
-         unused: true
-      }
-   }
-}
+         unused: true,
+      },
+   },
+};
