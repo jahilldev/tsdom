@@ -13,14 +13,14 @@ function delegate(scope, query, cb) {
         var hit = false;
         $elements.each(function (_el) {
             var test = ev.target;
-            if (test == _el) {
+            if (test === _el) {
                 hit = true;
                 el = test;
                 return;
             }
             while (test && test !== scope) {
                 test = test.parentNode;
-                if (test == _el) {
+                if (test === _el) {
                     hit = true;
                     el = test;
                 }

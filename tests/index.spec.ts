@@ -23,8 +23,6 @@ describe('tsdom:selector', () => {
     * ID
     */
    describe('(qry = #id)', () => {
-      let tsdom: any;
-
       beforeEach(() => {
          sandbox = sinon.sandbox.create();
       });

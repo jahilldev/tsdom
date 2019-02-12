@@ -9,6 +9,7 @@ module.exports = {
       root: './',
       dist: './dist/',
       src: './src/',
+      tests: './tests/',
    },
 
    uglify: {

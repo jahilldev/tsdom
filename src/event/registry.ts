@@ -1,5 +1,3 @@
-
-
 /* -----------------------------------
  *
  * IEvents
@@ -7,7 +5,6 @@
  * -------------------------------- */
 
 export type IEvents = Registry;
-
 
 /* -----------------------------------
  *
@@ -20,7 +17,6 @@ export interface IEvent {
    handler: EventListener;
 }
 
-
 /* -----------------------------------
  *
  * IHandler
@@ -29,7 +25,6 @@ export interface IEvent {
 
 export type IHandler = (ev: Event, el: HTMLElement) => void;
 
-
 /* -----------------------------------
  *
  * Registry
@@ -37,45 +32,28 @@ export type IHandler = (ev: Event, el: HTMLElement) => void;
  * -------------------------------- */
 
 export class Registry {
-
-
    private list: IEvent[];
 
-
    public constructor() {
-
       this.list = [];
-
    }
 
-
    public find(ev: string) {
-
       const { list } = this;
 
       return list.filter(_ev => _ev.type === ev);
-
    }
-
 
    public add(ev: IEvent) {
-
-      this.list.push(ev)
-
+      this.list.push(ev);
    }
 
-
    public remove(ev: string) {
-
       const { list } = this;
 
       this.list = list.filter(_ev => _ev.type !== ev);
-
    }
-
-
 }
-
 
 /* -----------------------------------
  *
@@ -84,11 +62,8 @@ export class Registry {
  * -------------------------------- */
 
 function registry() {
-
    return new Registry();
-
 }
-
 
 /* -----------------------------------
  *

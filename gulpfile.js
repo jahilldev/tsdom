@@ -1,6 +1,6 @@
 const gulp = require('gulp');
 const sequence = require('gulp-sequence');
-const config = require('./task/config');
+const config = require('./tasks/config');
 
 /* -----------------------------------
  *
@@ -9,7 +9,7 @@ const config = require('./task/config');
  * -------------------------------- */
 
 function task(task) {
-   return require('./task/' + task)(config, gulp);
+   return require('./tasks/' + task)(config, gulp);
 }
 
 /* -----------------------------------
@@ -20,6 +20,7 @@ function task(task) {
 
 gulp.task('js:module', task('js-module'));
 gulp.task('js:include', task('js-include'));
+gulp.task('js:lint', task('js-lint'));
 
 /* -----------------------------------
  *
@@ -27,10 +28,4 @@ gulp.task('js:include', task('js-include'));
  *
  * -------------------------------- */
 
-gulp.task(
-   'default',
-   sequence(
-      ['js:module', 'js:include']
-      // 'watch'
-   )
-);
+gulp.task('default', sequence('js:lint', ['js:module', 'js:include']));

@@ -36,9 +36,7 @@ export declare class Instance {
     toArray(): HTMLElement[];
 }
 export declare namespace TSDom {
-    interface Init {
-        (qry: string | HTMLElement, ctx?: Element, meta?: IMeta): Instance;
-    }
+    type Init = (qry: string | HTMLElement, ctx?: Element, meta?: IMeta) => Instance;
     class Object extends Instance {
     }
 }

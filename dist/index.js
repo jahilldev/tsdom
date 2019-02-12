@@ -44,15 +44,15 @@ var Instance = /** @class */ (function () {
         var i;
         do {
             i = match.length;
-            while (--i >= 0 && match.item(i) !== el) { }
-            ;
-        } while ((i < 0) && (el = el.parentElement));
+            while (--i >= 0 && match.item(i) !== el) {
+                // noop
+            }
+        } while (i < 0 && (el = el.parentElement));
         return new Instance(el);
     };
     Instance.prototype.each = function (cb) {
         for (var i = 0, len = this.length; i < len;) {
-            var el = this[i];
-            if (cb.call(this, this[i], i++) == false) {
+            if (cb.call(this, this[i], i++) === false) {
                 break;
             }
         }
@@ -60,7 +60,8 @@ var Instance = /** @class */ (function () {
     };
     Instance.prototype.css = function (obj) {
         this.each(function (el) {
-            for (var key in obj) {
+            for (var _i = 0, _a = Object.keys(obj); _i < _a.length; _i++) {
+                var key = _a[_i];
                 var val = obj[key];
                 el.style.setProperty(key, val);
             }
@@ -132,7 +133,7 @@ var Instance = /** @class */ (function () {
                 el.addEventListener(ev, cb, true);
                 events.add({
                     type: ev,
-                    handler: cb
+                    handler: cb,
                 });
             }
             else {
@@ -170,7 +171,7 @@ var Instance = /** @class */ (function () {
         if (!item) {
             return null;
         }
-        if (val == undefined) {
+        if (val === undefined) {
             return item.innerText;
         }
         this.each(function (el) {
@@ -183,7 +184,7 @@ var Instance = /** @class */ (function () {
         if (!item) {
             return null;
         }
-        if (val == undefined) {
+        if (val === undefined) {
             return item.getAttribute("data-" + key);
         }
         this.each(function (el) {
@@ -196,7 +197,7 @@ var Instance = /** @class */ (function () {
         if (!item) {
             return null;
         }
-        if (val == undefined) {
+        if (val === undefined) {
             return item.innerHTML;
         }
         this.each(function (el) {
@@ -250,4 +251,6 @@ exports.Instance = Instance;
  * Constructor
  *
  * -------------------------------- */
-exports.default = (function (qry, ctx) { return new Instance(qry, ctx); });
+exports.default = (function (qry, ctx) {
+    return new Instance(qry, ctx);
+});
